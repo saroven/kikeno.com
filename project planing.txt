@@ -1,0 +1,82 @@
+project name : kikeno forum
+
+project description: This is a forum site or help seeking site, Any one can seek for help and any one can answer in the forum question
+
+
+tables structure:
+
+1. Users
+	id int(11) primery key
+	name varchar(150) not null
+	email varchar(150) not null
+	password varchar(255) not null
+	gender int(2) not null fk-genders.id
+	role_id int(2) not null default(1) fk-roles.id
+	country int(11)
+	location varchar(255)
+	status int(2) default(1)
+	created_at timestamp
+	updated_at timestamp
+	deleted_at timestamp
+
+2. Genders
+	id int(11) primary key
+	title varchar(15) not null
+	status int(2) default(1)
+	created_at timestamp
+	updated_at timestamp
+
+3. Roles
+	id int(11) primary key
+	id int(11) primary key
+	title varchar(15) not null
+	status int(2) default(1)
+	created_at timestamp
+	updated_at timestamp
+
+4. Categories
+		id int(11) primary key
+		title varchar(15) not null
+		status int(2) default(1)
+		created_at timestampe
+		updated_at timestampe
+
+5. Posts
+	id int(11) primary key
+	title varchar(150) not null
+	content text
+	category_id int(11) not null fk-categories.id 
+	status int(2) default(1)
+	created_at timestamp
+	updated_at timestamp
+	deleted_at timestamp
+6. votes
+	id int(11) primary key
+	option int(2) comment(1= =Like/upvote, 2=Dislike) not null
+	user_id int(11) not null fk-users.id
+	created_at timestamp
+	updated_at timestamp
+
+7.Comments
+	id int(11) primary key
+	
+	user_id int(11) not null fk-users.id
+	created_at timestamp
+	updated_at timestamp
+
+8. Options
+	id int(11) primery key
+	site_name varchar(100) default(app-name) not null
+	tagline varchar(100)
+	description varchar(255)
+	logo varchar(255)
+	icon varchar(255)
+	hostname varchar(100)
+	db_name varchar(150)
+	db_username varchar(150)
+	user_pass varchar(255)
+	
+	
+	
+	
+	
