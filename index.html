@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KiKeno - যা জানতে চান, জিজ্ঞেস করুন</title>
+  <meta name="description" content="বাংলায় যে কোনো প্রশ্ন করুন এবং সহজ, নির্ভরযোগ্য উত্তর পান আমাদের কমিউনিটি ও AI এর সহায়তায়।">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-brand: #F95031;
+      --primary-hover: #E03B1E;
+      --primary-blue: #3B58F5;
+      --primary-blue-hover: #2944DB;
+      --dark-blue: #1A1F4B;
+      --text-main: #1E293B;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+      --bg-page: #FAFAFC;
+      --card-bg: #FFFFFF;
+      --border-color: #E2E8F0;
+      --font-bn: 'Hind Siliguri', sans-serif;
+      --font-en: 'Inter', sans-serif;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.2s ease-in-out;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-bn);
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    header {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo-area { 
+      display: flex; 
+      flex-direction: column; 
+      text-decoration: none;
+    }
+    .logo-title { 
+      font-family: var(--font-en); 
+      font-size: 26px; 
+      font-weight: 700; 
+      letter-spacing: -0.5px; 
+      color: var(--text-main); 
+      line-height: 1.1; 
+    }
+    .logo-title span { color: var(--primary-brand); }
+    .logo-tagline { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 0;
+      position: relative;
+      transition: var(--transition);
+    }
+    .nav-links a:hover {
+      color: var(--primary-brand);
+    }
+    
+    .nav-links a.active { 
+      color: var(--primary-brand); 
+    }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--primary-brand);
+    }
+
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .nav-icons { display: flex; gap: 12px; color: var(--text-muted); }
+    
+    .icon-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    .icon-btn:hover {
+      background: #F1F5F9;
+      color: var(--text-main);
+    }
+
+    .btn-login {
+      background: transparent; 
+      border: 1px solid var(--border-color);
+      padding: 8px 18px; 
+      border-radius: var(--radius-sm); 
+      font-family: var(--font-bn); 
+      font-weight: 600; 
+      font-size: 14px;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-login:hover {
+      background: #F8FAFC;
+      border-color: #CBD5E1;
+    }
+
+    .btn-signup {
+      background: var(--primary-brand); 
+      color: #fff; 
+      border: none;
+      padding: 9px 20px; 
+      border-radius: var(--radius-sm); 
+      font-family: var(--font-bn); 
+      font-weight: 600; 
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-signup:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(249, 80, 49, 0.25);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-content { flex: 1; }
+    .hero-title { 
+      font-size: 48px; 
+      font-weight: 700; 
+      line-height: 1.2; 
+      margin-bottom: 16px; 
+      color: var(--text-main);
+    }
+    .hero-title span { color: var(--primary-brand); font-family: var(--font-en); }
+    .hero-subtitle { font-size: 18px; color: var(--text-muted); margin-bottom: 32px; max-width: 480px; }
+
+    .search-box {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      padding: 8px 8px 8px 24px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 24px;
+      max-width: 550px;
+      transition: var(--transition);
+    }
+    .search-box:focus-within {
+      border-color: var(--primary-brand);
+      box-shadow: 0 0 0 3px rgba(249, 80, 49, 0.15);
+    }
+    .search-box input {
+      flex: 1; border: none; outline: none; font-size: 16px; font-family: var(--font-bn); color: var(--text-main);
+      background: transparent;
+    }
+    .search-box button {
+      background: var(--primary-brand); 
+      width: 44px; 
+      height: 44px; 
+      border-radius: 50%; 
+      border: none; 
+      color: #fff; 
+      cursor: pointer;
+      display: grid; 
+      place-items: center;
+      transition: var(--transition);
+    }
+    .search-box button:hover {
+      background: var(--primary-hover);
+    }
+
+    .trending-tags { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; flex-wrap: wrap; }
+    .trending-tags span { color: var(--primary-brand); display: flex; align-items: center; gap: 4px; }
+    .tag { 
+      background: #EEF2FF; 
+      color: var(--text-main); 
+      padding: 4px 14px; 
+      border-radius: 20px; 
+      text-decoration: none; 
+      font-size: 13px; 
+      transition: var(--transition);
+    }
+    .tag:hover {
+      background: #E0E7FF;
+      color: var(--primary-blue);
+    }
+
+    /* Hero 3D Illustration & Floating Bubbles */
+    .hero-image {
+      flex: 1;
+      position: relative;
+      height: 420px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .hero-character-img {
+      max-height: 380px;
+      width: auto;
+      object-fit: contain;
+      z-index: 1;
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.08));
+    }
+
+    .floating-bubble {
+      position: absolute; 
+      background: #FFFFFF; 
+      padding: 12px 20px; 
+      border-radius: 14px; 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
+      font-weight: 700; 
+      font-size: 14px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      z-index: 2;
+      animation: float 4s ease-in-out infinite alternate;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+    .bubble-1 { top: 20px; left: -20px; animation-delay: 0s; }
+    .bubble-2 { top: 30px; right: -20px; animation-delay: 1s; }
+    .bubble-3 { bottom: 90px; left: -30px; animation-delay: 2s; }
+    .bubble-4 { bottom: 70px; right: -30px; animation-delay: 1.5s; }
+    .bubble-sub { display: block; font-size: 11px; font-weight: 400; color: var(--text-muted); margin-top: 4px; }
+
+    /* Section Headers */
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .section-title { font-size: 22px; font-weight: 700; color: var(--text-main); }
+    .view-all { 
+      color: var(--primary-blue); 
+      text-decoration: none; 
+      font-size: 14px; 
+      font-weight: 600; 
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .view-all:hover { color: var(--primary-blue-hover); transform: translateX(3px); }
+
+    /* Subject Categories */
+    .categories { padding: 40px 0; }
+    .category-grid {
+      display: grid; 
+      grid-template-columns: repeat(9, 1fr); 
+      gap: 16px;
+    }
+    .cat-card {
+      background: var(--card-bg); 
+      border: 1px solid var(--border-color); 
+      border-radius: var(--radius-md); 
+      padding: 16px 8px; 
+      text-align: center; 
+      text-decoration: none; 
+      color: var(--text-main); 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 12px; 
+      font-size: 13px; 
+      font-weight: 600; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      transition: var(--transition);
+    }
+    .cat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+      border-color: #CBD5E1;
+    }
+    .cat-icon { 
+      width: 44px; 
+      height: 44px; 
+      display: grid; 
+      place-items: center; 
+      border-radius: 10px; 
+      font-size: 22px; 
+    }
+
+    /* Main Grid: Questions + Compare */
+    .main-grid {
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 32px; 
+      padding: 40px 0;
+    }
+    .panel { 
+      background: var(--card-bg); 
+      border: 1px solid var(--border-color); 
+      border-radius: var(--radius-lg); 
+      padding: 24px; 
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Popular Questions List */
+    .question-list { display: flex; flex-direction: column; }
+    .question-item {
+      display: flex; 
+      gap: 16px; 
+      padding: 16px 0; 
+      border-bottom: 1px solid var(--border-color);
+      align-items: center;
+    }
+    .question-item:last-child { border-bottom: none; }
+    .q-img { 
+      width: 80px; 
+      height: 60px; 
+      border-radius: 8px; 
+      flex-shrink: 0; 
+      object-fit: cover;
+      border: 1px solid var(--border-color);
+    }
+    .q-content { flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-height: 60px; }
+    .q-title { 
+      font-size: 15px; 
+      font-weight: 700; 
+      margin-bottom: 6px; 
+      color: var(--text-main); 
+      text-decoration: none;
+      line-height: 1.4;
+      transition: var(--transition);
+    }
+    .q-title:hover { color: var(--primary-brand); }
+    .q-meta { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-muted); }
+    .q-category { font-weight: 600; }
+    .q-stats { display: flex; gap: 12px; }
+    .q-bookmark {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px;
+      transition: var(--transition);
+    }
+    .q-bookmark:hover { color: var(--primary-brand); }
+
+    /* Compare Section */
+    .compare-tabs { display: flex; gap: 24px; border-bottom: 1px solid var(--border-color); margin-bottom: 24px; }
+    .tab { 
+      padding-bottom: 12px; 
+      font-size: 14px; 
+      font-weight: 600; 
+      color: var(--text-muted); 
+      cursor: pointer; 
+      transition: var(--transition);
+    }
+    .tab.active { 
+      color: var(--primary-blue); 
+      border-bottom: 2px solid var(--primary-blue); 
+    }
+
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; position: relative; }
+    .compare-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .compare-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--text-main); }
+    .c-img { 
+      width: 90px; 
+      height: 90px; 
+      object-fit: contain; 
+      border-radius: 8px; 
+      margin-bottom: 8px; 
+    }
+    .c-icon-box {
+      width: 70px;
+      height: 70px;
+      background: #F1F5F9;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    
+    .vs-badge {
+      position: absolute; 
+      left: 50%; 
+      top: 50%; 
+      transform: translate(-50%, -50%);
+      width: 32px; 
+      height: 32px; 
+      background: var(--bg-page); 
+      border-radius: 50%; 
+      display: grid; 
+      place-items: center; 
+      font-size: 12px; 
+      font-weight: 700; 
+      color: var(--text-muted); 
+      border: 1px solid var(--border-color);
+      z-index: 2;
+    }
+    
+    .compare-row { 
+      display: flex; 
+      justify-content: space-between; 
+      position: relative; 
+      border: 1px solid var(--border-color); 
+      border-radius: var(--radius-md); 
+      padding: 16px; 
+      background: var(--bg-page); 
+      margin-bottom: 16px;
+    }
+    
+    .btn-full-width {
+      width: 100%; 
+      background: var(--primary-blue); 
+      color: #fff; 
+      padding: 12px; 
+      border: none; 
+      border-radius: var(--radius-sm); 
+      font-weight: 600; 
+      font-family: var(--font-bn); 
+      cursor: pointer; 
+      font-size: 15px;
+      transition: var(--transition);
+    }
+    .btn-full-width:hover {
+      background: var(--primary-blue-hover);
+    }
+
+    /* Features 4-col */
+    .features-banner { 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 24px; 
+      padding: 40px 0; 
+      border-top: 1px solid var(--border-color); 
+      margin-top: 20px;
+    }
+    .feature-item { display: flex; gap: 16px; align-items: flex-start; }
+    .f-icon { 
+      width: 48px; 
+      height: 48px; 
+      flex-shrink: 0; 
+      border-radius: 50%; 
+      display: grid; 
+      place-items: center; 
+      font-size: 20px; 
+    }
+    .f-text h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--text-main); }
+    .f-text p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+    /* Dark Stats Banner */
+    .stats-banner { 
+      background: var(--dark-blue); 
+      border-radius: var(--radius-lg); 
+      padding: 32px; 
+      display: flex; 
+      justify-content: space-around; 
+      color: #fff; 
+      margin-bottom: 40px; 
+    }
+    .stat-item { display: flex; align-items: center; gap: 16px; }
+    .stat-icon { 
+      width: 40px; 
+      height: 40px; 
+      background: rgba(255,255,255,0.1); 
+      border-radius: 50%; 
+      display: grid; 
+      place-items: center; 
+      font-size: 18px;
+    }
+    .stat-info h3 { font-family: var(--font-en); font-size: 24px; font-weight: 700; color: #FFF; }
+    .stat-info p { font-size: 13px; opacity: 0.8; }
+
+    /* Newsletter */
+    .newsletter-box { 
+      background: #fff; 
+      border: 1px solid var(--border-color); 
+      border-radius: var(--radius-lg); 
+      padding: 32px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      margin-bottom: 60px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02); 
+    }
+    .news-left { display: flex; gap: 16px; align-items: center; }
+    .news-icon { 
+      width: 48px; 
+      height: 48px; 
+      background: #EEF2FF; 
+      border-radius: var(--radius-sm); 
+      display: grid; 
+      place-items: center; 
+      color: var(--primary-blue); 
+    }
+    .news-left h4 { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: var(--text-main); }
+    .news-left p { font-size: 14px; color: var(--text-muted); }
+    .news-form { display: flex; gap: 12px; width: 450px; }
+    .news-form input { 
+      flex: 1; 
+      padding: 12px 16px; 
+      border: 1px solid var(--border-color); 
+      border-radius: var(--radius-sm); 
+      font-family: var(--font-bn); 
+      outline: none; 
+      font-size: 14px;
+    }
+    .news-form input:focus {
+      border-color: var(--primary-blue);
+    }
+    .news-form button { 
+      background: var(--primary-blue); 
+      color: #fff; 
+      padding: 0 24px; 
+      border: none; 
+      border-radius: var(--radius-sm); 
+      font-weight: 600; 
+      cursor: pointer; 
+      font-family: var(--font-bn);
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    .news-form button:hover {
+      background: var(--primary-blue-hover);
+    }
+
+    /* Footer */
+    footer { padding: 60px 0 24px 0; border-top: 1px solid var(--border-color); background: var(--card-bg); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-desc { font-size: 13px; color: var(--text-muted); margin: 16px 0; line-height: 1.6; }
+    .social-icons { display: flex; gap: 12px; }
+    .social-btn { 
+      width: 32px; 
+      height: 32px; 
+      background: #E2E8F0; 
+      border-radius: 50%; 
+      display: grid;
+      place-items: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .social-btn.fb:hover { background: #1877F2; color: #FFF; }
+    .social-btn.yt:hover { background: #FF0000; color: #FFF; }
+    .social-btn.ig:hover { background: #E4405F; color: #FFF; }
+    .social-btn.li:hover { background: #0A66C2; color: #FFF; }
+    
+    .footer-col h5 { font-size: 15px; font-weight: 700; margin-bottom: 20px; color: var(--text-main); }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { text-decoration: none; color: var(--text-muted); font-size: 14px; transition: var(--transition); }
+    .footer-col a:hover { color: var(--primary-brand); }
+    .footer-bottom { text-align: center; border-top: 1px solid var(--border-color); padding-top: 24px; font-size: 13px; color: var(--text-light); }
+
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 1024px) {
+      .category-grid { grid-template-columns: repeat(5, 1fr); }
+      .main-grid { grid-template-columns: 1fr; }
+      .features-banner { grid-template-columns: repeat(2, 1fr); }
+      .stats-banner { flex-wrap: wrap; gap: 20px; justify-content: center; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        flex-direction: column;
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-md);
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .nav-links.show { display: flex; }
+      .nav-links a.active::after { display: none; }
+
+      .hero { flex-direction: column; text-align: center; gap: 32px; }
+      .hero-title { font-size: 36px; }
+      .hero-subtitle { margin: 0 auto 24px; }
+      .search-box { margin: 0 auto 20px; width: 100%; }
+      .trending-tags { justify-content: center; }
+      .hero-image { width: 100%; height: 320px; }
+      .hero-character-img { max-height: 280px; }
+
+      .category-grid { grid-template-columns: repeat(3, 1fr); }
+      .features-banner { grid-template-columns: 1fr; }
+
+      .newsletter-box { flex-direction: column; gap: 20px; text-align: center; }
+      .news-left { flex-direction: column; }
+      .news-form { width: 100%; flex-direction: column; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-inner">
+      <a href="#" class="logo-area" aria-label="KiKeno হোম">
+        <div class="logo-title">Ki<span>Keno</span></div>
+        <p class="logo-tagline">প্রশ্ন করুন, বুঝুন, সঠিক সিদ্ধান্ত নিন</p>
+      </a>
+      
+      <button class="mobile-menu-btn" id="menuToggle" aria-label="মেনু টগল করুন">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <ul class="nav-links" id="navMenu">
+        <li><a href="#" class="active">হোম</a></li>
+        <li><a href="#">প্রশ্ন করুন</a></li>
+        <li><a href="#">বিষয়সমূহ ▾</a></li>
+        <li><a href="#">তুলনা করুন</a></li>
+        <li><a href="#">ব্লগ</a></li>
+        <li><a href="#">বিশেষজ্ঞরা</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="nav-icons">
+          <button class="icon-btn" aria-label="অনুসন্ধান">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </button>
+          <button class="icon-btn" aria-label="ডার্ক মোড">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          </button>
+          <button class="icon-btn" aria-label="নোটিফিকেশন">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+          </button>
+        </div>
+        <button class="btn-login">লগইন</button>
+        <button class="btn-signup">সাইন আপ করুন</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">যা জানতে চান,<br>জিজ্ঞেস করুন <span>KiKeno</span> কে</h1>
+        <p class="hero-subtitle">বাংলায় যে কোনো প্রশ্ন করুন এবং সহজ, নির্ভরযোগ্য উত্তর পান আমাদের কমিউনিটি ও AI এর সহায়তায়।</p>
+        
+        <form class="search-box" action="#" method="GET" role="search">
+          <input type="text" placeholder="আজ আপনি কী জানতে চান?" aria-label="অনুসন্ধান করুন">
+          <button type="submit" aria-label="খুঁজুন">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </button>
+        </form>
+
+        <div class="trending-tags">
+          <span>🔥 জনপ্রিয় প্রশ্ন:</span>
+          <a href="#" class="tag">ডেঙ্গু কি?</a>
+          <a href="#" class="tag">FDR নাকি DPS?</a>
+          <a href="#" class="tag">iPhone 16 কেন?</a>
+          <a href="#" class="tag">শেয়ার বাজারে বিনিয়োগ কিভাবে শুরু করবো?</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="assets/images/hero_character.png" alt="KiKeno Forum Illustration" class="hero-character-img">
+        <div class="floating-bubble bubble-1">কি? <span class="bubble-sub">এটা কী?</span></div>
+        <div class="floating-bubble bubble-2">কেন? <span class="bubble-sub">এটা কেন হয়?</span></div>
+        <div class="floating-bubble bubble-3">কিভাবে? <span class="bubble-sub">এটা কিভাবে কাজ করে?</span></div>
+        <div class="floating-bubble bubble-4">কোনটা? <span class="bubble-sub">কোনটা আমার জন্য সেরা?</span></div>
+      </div>
+    </section>
+
+    <section class="categories">
+      <div class="section-header">
+        <h2 class="section-title">বিষয়সমূহ</h2>
+        <a href="#" class="view-all">সব দেখুন →</a>
+      </div>
+      
+      <div class="category-grid">
+        <a href="#" class="cat-card">
+          <div class="cat-icon" style="color: #10B981; background: #ECFDF5;"><span role="img" aria-label="টাকা">💰</span></div>
+          টাকা ও অর্থনীতি
+        </a>
+        <a href="#" class="cat-card">
+          <div class="cat-icon" style="color: #EF4444; background: #FEF2F2;"><span role="img" aria-label="স্বাস্থ্য">❤️</span></div>
+          স্বাস্থ্য
+        </a>
+        <a href="#" class="cat-card">
+          <div class="cat-icon" style="color: #3B82F6; background: #EFF6FF;"><span role="img" aria-label="প্রযুক্তি">💻</span></div>
+          প্রযুক্তি
+        </a>
+        <a href="#" class="cat-card">
+          <div class="cat-icon" style="color: #8B5CF6; background: #F5F3FF;"><span role="img" aria-label="শিক্ষা">🎓</span></div>
+          শিক্ষা
+        </a>
+        <a href="#" class="cat-card">
+          <div class="cat-icon" style="color: #10B981; background: #ECFDF5;"><span role="img" aria-label="বাংলাদেশ">🇧🇩</span></div>
+          বাংলাদেশ
+        </a>
+        <a href="#" class="cat-card">
+          <div class="cat-icon" style="color: #F59E0B; background: #FFFBEB;"><span role="img" aria-label="বিশ্ব">🌐</span></div>
+          বিশ্ব
+        </a>
+        <a href="#" class="cat-card">
+          <div class="cat-icon" style="color: #3B82F6; background: #EFF6FF;"><span role="img" aria-label="গাড়ি">🚗</span></div>
+          গাড়ি
+        </a>
+        <a href="#" class="cat-card">
+          <div class="cat-icon" style="color: #EC4899; background: #FDF2F8;"><span role="img" aria-label="গ্যাজেট">📱</span></div>
+          মোবাইল ও গ্যাজেট
+        </a>
+        <a href="#" class="cat-card">
+          <div class="cat-icon" style="color: #F59E0B; background: #FFFBEB;"><span role="img" aria-label="লাইফস্টাইল">🏠</span></div>
+          জীবনযাপন
+        </a>
+      </div>
+    </section>
+
+    <section class="main-grid">
+      
+      <div class="panel">
+        <div class="section-header">
+          <h2 class="section-title">জনপ্রিয় প্রশ্নসমূহ</h2>
+          <a href="#" class="view-all">সব দেখুন →</a>
+        </div>
+        
+        <div class="question-list">
+          <div class="question-item">
+            <img src="assets/images/thumb_dengue.png" alt="ডেঙ্গু কি" class="q-img">
+            <div class="q-content">
+              <a href="#" class="q-title">ডেঙ্গু কি? লক্ষণ, চিকিৎসা ও প্রতিরোধ উপায়</a>
+              <div class="q-meta">
+                <span class="q-category" style="color:#EF4444;">স্বাস্থ্য</span>
+                <div class="q-stats">
+                  <span>12.5K ভিউ</span>
+                  <span>256 উত্তর</span>
+                </div>
+              </div>
+            </div>
+            <button class="q-bookmark" aria-label="বুকমার্ক করুন">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+
+          <div class="question-item">
+            <img src="assets/images/thumb_stock_market.png" alt="শেয়ার বাজার" class="q-img">
+            <div class="q-content">
+              <a href="#" class="q-title">শেয়ার বাজারে বিনিয়োগ কিভাবে শুরু করবেন?</a>
+              <div class="q-meta">
+                <span class="q-category" style="color:#10B981;">ব্যবসা ও বিনিয়োগ</span>
+                <div class="q-stats">
+                  <span>8.7K ভিউ</span>
+                  <span>193 উত্তর</span>
+                </div>
+              </div>
+            </div>
+            <button class="q-bookmark" aria-label="বুকমার্ক করুন">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+
+          <div class="question-item">
+            <img src="assets/images/thumb_iphone16.png" alt="iPhone 16" class="q-img">
+            <div class="q-content">
+              <a href="#" class="q-title">iPhone 16 সিরিজ কি কেনা উচিত?</a>
+              <div class="q-meta">
+                <span class="q-category" style="color:#3B82F6;">মোবাইল ও গ্যাজেট</span>
+                <div class="q-stats">
+                  <span>15.2K ভিউ</span>
+                  <span>312 উত্তর</span>
+                </div>
+              </div>
+            </div>
+            <button class="q-bookmark" aria-label="বুকমার্ক করুন">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+
+          <div class="question-item">
+            <img src="assets/images/thumb_fdr_dps.png" alt="FDR vs DPS" class="q-img">
+            <div class="q-content">
+              <a href="#" class="q-title">FDR নাকি DPS – কোনটিতে বেশি লাভ?</a>
+              <div class="q-meta">
+                <span class="q-category" style="color:#10B981;">টাকা ও অর্থনীতি</span>
+                <div class="q-stats">
+                  <span>9.1K ভিউ</span>
+                  <span>178 উত্তর</span>
+                </div>
+              </div>
+            </div>
+            <button class="q-bookmark" aria-label="বুকমার্ক করুন">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+
+          <div class="question-item">
+            <img src="assets/images/thumb_passport.png" alt="পাসপোর্ট নিয়ম" class="q-img">
+            <div class="q-content">
+              <a href="#" class="q-title">পাসপোর্ট করতে কি কি লাগে? সম্পূর্ণ গাইডলাইন</a>
+              <div class="q-meta">
+                <span class="q-category" style="color:#10B981;">বাংলাদেশ</span>
+                <div class="q-stats">
+                  <span>6.3K ভিউ</span>
+                  <span>142 উত্তর</span>
+                </div>
+              </div>
+            </div>
+            <button class="q-bookmark" aria-label="বুকমার্ক করুন">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="section-header">
+          <h2 class="section-title">তুলনা করুন</h2>
+          <a href="#" class="view-all">সব দেখুন →</a>
+        </div>
+
+        <div class="compare-tabs">
+          <span class="tab active">মোবাইল</span>
+          <span class="tab">বাইক</span>
+          <span class="tab">ব্যাংক</span>
+          <span class="tab">অন্যান্য</span>
+        </div>
+
+        <div class="compare-row">
+          <div class="compare-grid">
+            <div class="compare-card">
+              <h3 class="compare-title">iPhone 16</h3>
+              <img src="assets/images/compare_iphone16.png" alt="iPhone 16" class="c-img">
+            </div>
+            <div class="vs-badge">VS</div>
+            <div class="compare-card">
+              <h3 class="compare-title">Samsung S24</h3>
+              <img src="assets/images/compare_samsung24.png" alt="Samsung S24" class="c-img">
+            </div>
+          </div>
+        </div>
+
+        <div class="compare-row">
+          <div class="compare-grid">
+            <div class="compare-card">
+              <h3 class="compare-title">FDR</h3>
+              <div class="c-icon-box">🏛️</div>
+            </div>
+            <div class="vs-badge">VS</div>
+            <div class="compare-card">
+              <h3 class="compare-title">DPS</h3>
+              <div class="c-icon-box">🏦</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-full-width">আরও তুলনা দেখুন</button>
+
+      </div>
+    </section>
+
+    <section class="features-banner">
+      <div class="feature-item">
+        <div class="f-icon" style="color: #6366F1; background: #E0E7FF;">💬</div>
+        <div class="f-text">
+          <h4>প্রশ্ন করুন</h4>
+          <p>যে কোনো বিষয় সম্পর্কে প্রশ্ন করুন, দ্রুত উত্তর পান।</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="f-icon" style="color: #10B981; background: #D1FAE5;">✅</div>
+        <div class="f-text">
+          <h4>বিশ্বস্ত উত্তর</h4>
+          <p>কমিউনিটি ও বিশেষজ্ঞদের নির্ভরযোগ্য উত্তর।</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="f-icon" style="color: #F59E0B; background: #FEF3C7;">⚖️</div>
+        <div class="f-text">
+          <h4>তুলনা করুন</h4>
+          <p>বিভিন্ন অপশন তুলনা করে সঠিক সিদ্ধান্ত নিন।</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="f-icon" style="color: #3B82F6; background: #DBEAFE;">👥</div>
+        <div class="f-text">
+          <h4>এক্সপার্ট থেকে জানুন</h4>
+          <p>বিশেষজ্ঞদের কাছ থেকে গভীর জ্ঞান অর্জন করুন।</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-banner">
+      <div class="stat-item">
+        <div class="stat-icon">💬</div>
+        <div class="stat-info">
+          <h3>5,00,000+</h3>
+          <p>সক্রিয় ব্যবহারকারী</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">🕒</div>
+        <div class="stat-info">
+          <h3>1,20,000+</h3>
+          <p>প্রশ্নোত্তর</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">≡</div>
+        <div class="stat-info">
+          <h3>25,000+</h3>
+          <p>বিশেষজ্ঞ ও লেখক</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">🛡️</div>
+        <div class="stat-info">
+          <h3>100%</h3>
+          <p>নির্ভরযোগ্য ও নিরাপদ</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter-box">
+      <div class="news-left">
+        <div class="news-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        </div>
+        <div>
+          <h4>নতুন কিছু মিস করবেন না</h4>
+          <p>সাপ্তাহিক সেরা প্রশ্ন ও উত্তর পেতে আমাদের সাথে থাকুন।</p>
+        </div>
+      </div>
+      <form class="news-form" action="#" method="POST">
+        <input type="email" placeholder="আপনার ইমেইল দিন" aria-label="ইমেইল ঠিকানা">
+        <button type="submit">সাবস্ক্রাইব করুন</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="#" class="logo-area">
+            <div class="logo-title">Ki<span>Keno</span></div>
+            <p class="logo-tagline">প্রশ্ন করুন, বুঝুন, সঠিক সিদ্ধান্ত নিন</p>
+          </a>
+          <p class="footer-desc">KiKeno হলো বাংলায় জ্ঞান, তথ্য ও সিদ্ধান্ত নেওয়ার আপনার বিশ্বস্ত সঙ্গী।</p>
+          <div class="social-icons">
+            <a href="#" class="social-btn fb" aria-label="Facebook"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="#" class="social-btn yt" aria-label="YouTube"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="#" class="social-btn ig" aria-label="Instagram"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="#" class="social-btn li" aria-label="LinkedIn"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>দ্রুত লিংক</h5>
+          <ul>
+            <li><a href="#">প্রশ্ন করুন</a></li>
+            <li><a href="#">বিষয়সমূহ</a></li>
+            <li><a href="#">তুলনা করুন</a></li>
+            <li><a href="#">ব্লগ</a></li>
+            <li><a href="#">ব্যবহারের শর্তাবলী</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>সহায়তা</h5>
+          <ul>
+            <li><a href="#">সাহায্য কেন্দ্র</a></li>
+            <li><a href="#">যোগাযোগ করুন</a></li>
+            <li><a href="#">গোপনীয়তা নীতি</a></li>
+            <li><a href="#">রিটার্ন নীতি</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>যোগাযোগ</h5>
+          <ul>
+            <li><a href="mailto:info@kikeno.com">Email: info@kikeno.com</a></li>
+            <li><a href="tel:+8801234567890">Phone: +880 1234-567890</a></li>
+            <li><a href="#">Dhaka, Bangladesh</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2024 KiKeno. সকল অধিকার সংরক্ষিত।
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+      });
+    }
+
+    // Interactive Tabs for Compare Section
+    const tabs = document.querySelectorAll('.compare-tabs .tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
