@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,35 @@
       --radius-md: 12px;
       --radius-lg: 16px;
       --transition: all 0.2s ease-in-out;
+      --hover-bg: #F1F5F9;
+      --input-bg: #FFFFFF;
+      --tag-bg: #EEF2FF;
+      --tag-hover: #E0E7FF;
+      --stat-banner-bg: #1A1F4B;
+      --stat-banner-text: #FFFFFF;
+    }
+
+    [data-theme="dark"] {
+      --primary-brand: #FF6B4A;
+      --primary-hover: #F95031;
+      --primary-blue: #5B75FF;
+      --primary-blue-hover: #3B58F5;
+      --dark-blue: #0F172A;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-light: #64748B;
+      --bg-page: #0B0F19;
+      --card-bg: #151D2A;
+      --border-color: #243044;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.4);
+      --hover-bg: #1E293B;
+      --input-bg: #111827;
+      --tag-bg: #1E293B;
+      --tag-hover: #334155;
+      --stat-banner-bg: #0F172A;
+      --stat-banner-text: #F8FAFC;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,12 +72,19 @@
       line-height: 1.5;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 24px;
+    }
+
+    /* Focus visible accessibility */
+    :focus-visible {
+      outline: 2px solid var(--primary-brand);
+      outline-offset: 2px;
     }
 
     /* Navbar */
@@ -59,6 +95,7 @@
       top: 0;
       z-index: 100;
       box-shadow: var(--shadow-sm);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
     .nav-inner {
@@ -69,20 +106,19 @@
     }
 
     .logo-area { 
-      display: flex; 
-      flex-direction: column; 
+      display: inline-flex; 
+      align-items: center;
       text-decoration: none;
     }
-    .logo-title { 
-      font-family: var(--font-en); 
-      font-size: 26px; 
-      font-weight: 700; 
-      letter-spacing: -0.5px; 
-      color: var(--text-main); 
-      line-height: 1.1; 
+    .logo-area img {
+      height: 52px;
+      width: auto;
+      display: block;
+      transition: filter 0.4s ease;
     }
-    .logo-title span { color: var(--primary-brand); }
-    .logo-tagline { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+    [data-theme="dark"] .logo-area img {
+      filter: brightness(0) invert(1);
+    }
 
     .nav-links {
       display: flex;
@@ -118,7 +154,7 @@
     }
 
     .nav-actions { display: flex; align-items: center; gap: 16px; }
-    .nav-icons { display: flex; gap: 12px; color: var(--text-muted); }
+    .nav-icons { display: flex; gap: 8px; color: var(--text-muted); }
     
     .icon-btn {
       background: transparent;
@@ -127,13 +163,13 @@
       cursor: pointer;
       display: grid;
       place-items: center;
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       transition: var(--transition);
     }
     .icon-btn:hover {
-      background: #F1F5F9;
+      background: var(--hover-bg);
       color: var(--text-main);
     }
 
@@ -150,7 +186,7 @@
       transition: var(--transition);
     }
     .btn-login:hover {
-      background: #F8FAFC;
+      background: var(--hover-bg);
       border-color: #CBD5E1;
     }
 
@@ -179,6 +215,24 @@
       font-size: 24px;
       color: var(--text-main);
       cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+    }
+    .mobile-menu-btn:hover {
+      background: var(--hover-bg);
+    }
+
+    .mobile-nav-buttons {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+    }
+    .mobile-nav-buttons button {
+      width: 100%;
     }
 
     /* Hero Section */
@@ -201,20 +255,20 @@
     .hero-subtitle { font-size: 18px; color: var(--text-muted); margin-bottom: 32px; max-width: 480px; }
 
     .search-box {
-      background: #fff;
+      background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 50px;
       padding: 8px 8px 8px 24px;
       display: flex;
       align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: var(--shadow-sm);
       margin-bottom: 24px;
       max-width: 550px;
       transition: var(--transition);
     }
     .search-box:focus-within {
       border-color: var(--primary-brand);
-      box-shadow: 0 0 0 3px rgba(249, 80, 49, 0.15);
+      box-shadow: 0 0 0 3px rgba(249, 80, 49, 0.2);
     }
     .search-box input {
       flex: 1; border: none; outline: none; font-size: 16px; font-family: var(--font-bn); color: var(--text-main);
@@ -236,20 +290,22 @@
       background: var(--primary-hover);
     }
 
-    .trending-tags { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; flex-wrap: wrap; }
+    .trending-tags { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; flex-wrap: wrap; }
     .trending-tags span { color: var(--primary-brand); display: flex; align-items: center; gap: 4px; }
     .tag { 
-      background: #EEF2FF; 
+      background: var(--tag-bg); 
       color: var(--text-main); 
-      padding: 4px 14px; 
+      padding: 5px 14px; 
       border-radius: 20px; 
       text-decoration: none; 
       font-size: 13px; 
       transition: var(--transition);
+      border: 1px solid var(--border-color);
     }
     .tag:hover {
-      background: #E0E7FF;
+      background: var(--tag-hover);
       color: var(--primary-blue);
+      border-color: var(--primary-blue);
     }
 
     /* Hero 3D Illustration & Floating Bubbles */
@@ -260,25 +316,28 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
     }
     
     .hero-character-img {
       max-height: 380px;
       width: auto;
+      max-width: 100%;
       object-fit: contain;
       z-index: 1;
-      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.08));
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.12));
     }
 
     .floating-bubble {
       position: absolute; 
-      background: #FFFFFF; 
-      padding: 12px 20px; 
+      background: var(--card-bg); 
+      color: var(--text-main);
+      padding: 10px 18px; 
       border-radius: 14px; 
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
+      box-shadow: var(--shadow-md); 
       font-weight: 700; 
       font-size: 14px;
-      border: 1px solid rgba(226, 232, 240, 0.8);
+      border: 1px solid var(--border-color);
       z-index: 2;
       animation: float 4s ease-in-out infinite alternate;
     }
@@ -286,11 +345,11 @@
       0% { transform: translateY(0px); }
       100% { transform: translateY(-8px); }
     }
-    .bubble-1 { top: 20px; left: -20px; animation-delay: 0s; }
-    .bubble-2 { top: 30px; right: -20px; animation-delay: 1s; }
-    .bubble-3 { bottom: 90px; left: -30px; animation-delay: 2s; }
-    .bubble-4 { bottom: 70px; right: -30px; animation-delay: 1.5s; }
-    .bubble-sub { display: block; font-size: 11px; font-weight: 400; color: var(--text-muted); margin-top: 4px; }
+    .bubble-1 { top: 5%; left: 0%; animation-delay: 0s; }
+    .bubble-2 { top: 8%; right: 0%; animation-delay: 1s; }
+    .bubble-3 { bottom: 16%; left: 0%; animation-delay: 2s; }
+    .bubble-4 { bottom: 10%; right: 0%; animation-delay: 1.5s; }
+    .bubble-sub { display: block; font-size: 11px; font-weight: 400; color: var(--text-muted); margin-top: 2px; }
 
     /* Section Headers */
     .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
@@ -311,38 +370,38 @@
     .categories { padding: 40px 0; }
     .category-grid {
       display: grid; 
-      grid-template-columns: repeat(9, 1fr); 
+      grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)); 
       gap: 16px;
     }
     .cat-card {
       background: var(--card-bg); 
       border: 1px solid var(--border-color); 
       border-radius: var(--radius-md); 
-      padding: 16px 8px; 
+      padding: 18px 10px; 
       text-align: center; 
       text-decoration: none; 
       color: var(--text-main); 
       display: flex; 
       flex-direction: column; 
       align-items: center; 
-      gap: 12px; 
+      gap: 10px; 
       font-size: 13px; 
       font-weight: 600; 
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      box-shadow: var(--shadow-sm);
       transition: var(--transition);
     }
     .cat-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
-      border-color: #CBD5E1;
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-brand);
     }
     .cat-icon { 
-      width: 44px; 
-      height: 44px; 
+      width: 48px; 
+      height: 48px; 
       display: grid; 
       place-items: center; 
-      border-radius: 10px; 
-      font-size: 22px; 
+      border-radius: 12px; 
+      transition: var(--transition);
     }
 
     /* Main Grid: Questions + Compare */
@@ -351,6 +410,7 @@
       grid-template-columns: 1fr 1fr; 
       gap: 32px; 
       padding: 40px 0;
+      align-items: start;
     }
     .panel { 
       background: var(--card-bg); 
@@ -358,21 +418,57 @@
       border-radius: var(--radius-lg); 
       padding: 24px; 
       box-shadow: var(--shadow-sm);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Upvote / Downvote Component */
+    .vote-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-page);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 6px 6px;
+      min-width: 44px;
+      flex-shrink: 0;
+    }
+    .vote-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    .vote-btn:hover { background: var(--hover-bg); color: var(--primary-brand); }
+    .vote-btn.voted-up { color: var(--primary-brand); }
+    .vote-btn.voted-down { color: var(--primary-blue); }
+    .vote-count {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 2px 0;
     }
 
     /* Popular Questions List */
     .question-list { display: flex; flex-direction: column; }
     .question-item {
       display: flex; 
-      gap: 16px; 
+      gap: 14px; 
       padding: 16px 0; 
       border-bottom: 1px solid var(--border-color);
       align-items: center;
     }
     .question-item:last-child { border-bottom: none; }
     .q-img { 
-      width: 80px; 
-      height: 60px; 
+      width: 76px; 
+      height: 64px; 
       border-radius: 8px; 
       flex-shrink: 0; 
       object-fit: cover;
@@ -397,27 +493,48 @@
       border: none;
       color: var(--text-muted);
       cursor: pointer;
-      padding: 4px;
+      padding: 6px;
+      border-radius: 50%;
       transition: var(--transition);
+      display: grid;
+      place-items: center;
     }
-    .q-bookmark:hover { color: var(--primary-brand); }
+    .q-bookmark:hover, .q-bookmark.bookmarked { color: var(--primary-brand); background: var(--hover-bg); }
 
     /* Compare Section */
-    .compare-tabs { display: flex; gap: 24px; border-bottom: 1px solid var(--border-color); margin-bottom: 24px; }
+    .compare-tabs { 
+      display: flex; 
+      gap: 12px; 
+      border-bottom: 1px solid var(--border-color); 
+      margin-bottom: 24px; 
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
     .tab { 
-      padding-bottom: 12px; 
+      padding: 8px 14px; 
       font-size: 14px; 
       font-weight: 600; 
       color: var(--text-muted); 
       cursor: pointer; 
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
       transition: var(--transition);
+      white-space: nowrap;
+      font-family: var(--font-bn);
     }
     .tab.active { 
       color: var(--primary-blue); 
-      border-bottom: 2px solid var(--primary-blue); 
+      border-bottom-color: var(--primary-blue); 
+    }
+    .tab:hover:not(.active) {
+      color: var(--text-main);
     }
 
-    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; position: relative; }
+    .compare-tab-content { display: none; }
+    .compare-tab-content.active { display: block; }
+
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; position: relative; }
     .compare-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
     .compare-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--text-main); }
     .c-img { 
@@ -428,14 +545,15 @@
       margin-bottom: 8px; 
     }
     .c-icon-box {
-      width: 70px;
-      height: 70px;
-      background: #F1F5F9;
-      border-radius: 12px;
+      width: 76px;
+      height: 76px;
+      background: var(--hover-bg);
+      border-radius: 14px;
       display: grid;
       place-items: center;
-      font-size: 32px;
       margin-bottom: 8px;
+      color: var(--primary-blue);
+      border: 1px solid var(--border-color);
     }
     
     .vs-badge {
@@ -443,22 +561,21 @@
       left: 50%; 
       top: 50%; 
       transform: translate(-50%, -50%);
-      width: 32px; 
-      height: 32px; 
-      background: var(--bg-page); 
+      width: 34px; 
+      height: 34px; 
+      background: var(--card-bg); 
       border-radius: 50%; 
       display: grid; 
       place-items: center; 
       font-size: 12px; 
       font-weight: 700; 
-      color: var(--text-muted); 
-      border: 1px solid var(--border-color);
+      color: var(--primary-brand); 
+      border: 2px solid var(--border-color);
       z-index: 2;
+      box-shadow: var(--shadow-sm);
     }
     
     .compare-row { 
-      display: flex; 
-      justify-content: space-between; 
       position: relative; 
       border: 1px solid var(--border-color); 
       border-radius: var(--radius-md); 
@@ -501,37 +618,38 @@
       border-radius: 50%; 
       display: grid; 
       place-items: center; 
-      font-size: 20px; 
     }
     .f-text h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--text-main); }
     .f-text p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
 
     /* Dark Stats Banner */
     .stats-banner { 
-      background: var(--dark-blue); 
+      background: var(--stat-banner-bg); 
       border-radius: var(--radius-lg); 
       padding: 32px; 
       display: flex; 
       justify-content: space-around; 
-      color: #fff; 
+      color: var(--stat-banner-text); 
       margin-bottom: 40px; 
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
     }
     .stat-item { display: flex; align-items: center; gap: 16px; }
     .stat-icon { 
-      width: 40px; 
-      height: 40px; 
-      background: rgba(255,255,255,0.1); 
+      width: 44px; 
+      height: 44px; 
+      background: rgba(255,255,255,0.12); 
       border-radius: 50%; 
       display: grid; 
       place-items: center; 
-      font-size: 18px;
+      color: #FFF;
     }
     .stat-info h3 { font-family: var(--font-en); font-size: 24px; font-weight: 700; color: #FFF; }
-    .stat-info p { font-size: 13px; opacity: 0.8; }
+    .stat-info p { font-size: 13px; opacity: 0.85; }
 
     /* Newsletter */
     .newsletter-box { 
-      background: #fff; 
+      background: var(--card-bg); 
       border: 1px solid var(--border-color); 
       border-radius: var(--radius-lg); 
       padding: 32px; 
@@ -539,13 +657,13 @@
       justify-content: space-between; 
       align-items: center; 
       margin-bottom: 60px; 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02); 
+      box-shadow: var(--shadow-sm); 
     }
     .news-left { display: flex; gap: 16px; align-items: center; }
     .news-icon { 
       width: 48px; 
       height: 48px; 
-      background: #EEF2FF; 
+      background: var(--hover-bg); 
       border-radius: var(--radius-sm); 
       display: grid; 
       place-items: center; 
@@ -562,6 +680,8 @@
       font-family: var(--font-bn); 
       outline: none; 
       font-size: 14px;
+      background: var(--input-bg);
+      color: var(--text-main);
     }
     .news-form input:focus {
       border-color: var(--primary-blue);
@@ -588,20 +708,21 @@
     .footer-desc { font-size: 13px; color: var(--text-muted); margin: 16px 0; line-height: 1.6; }
     .social-icons { display: flex; gap: 12px; }
     .social-btn { 
-      width: 32px; 
-      height: 32px; 
-      background: #E2E8F0; 
+      width: 36px; 
+      height: 36px; 
+      background: var(--hover-bg); 
       border-radius: 50%; 
       display: grid;
       place-items: center;
       color: var(--text-muted);
       text-decoration: none;
       transition: var(--transition);
+      border: 1px solid var(--border-color);
     }
-    .social-btn.fb:hover { background: #1877F2; color: #FFF; }
-    .social-btn.yt:hover { background: #FF0000; color: #FFF; }
-    .social-btn.ig:hover { background: #E4405F; color: #FFF; }
-    .social-btn.li:hover { background: #0A66C2; color: #FFF; }
+    .social-btn.fb:hover { background: #1877F2; color: #FFF; border-color: #1877F2; }
+    .social-btn.yt:hover { background: #FF0000; color: #FFF; border-color: #FF0000; }
+    .social-btn.ig:hover { background: #E4405F; color: #FFF; border-color: #E4405F; }
+    .social-btn.li:hover { background: #0A66C2; color: #FFF; border-color: #0A66C2; }
     
     .footer-col h5 { font-size: 15px; font-weight: 700; margin-bottom: 20px; color: var(--text-main); }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
@@ -611,15 +732,20 @@
 
     /* Media Queries for Mobile Responsiveness */
     @media (max-width: 1024px) {
-      .category-grid { grid-template-columns: repeat(5, 1fr); }
       .main-grid { grid-template-columns: 1fr; }
       .features-banner { grid-template-columns: repeat(2, 1fr); }
-      .stats-banner { flex-wrap: wrap; gap: 20px; justify-content: center; }
+      .stats-banner { flex-wrap: wrap; gap: 24px; justify-content: center; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 768px) {
       .mobile-menu-btn { display: block; }
+      .nav-actions .btn-login,
+      .nav-actions .btn-signup {
+        display: none;
+      }
+      .mobile-nav-buttons { display: flex; }
+
       .nav-links {
         display: none;
         position: absolute;
@@ -637,15 +763,15 @@
       .nav-links.show { display: flex; }
       .nav-links a.active::after { display: none; }
 
-      .hero { flex-direction: column; text-align: center; gap: 32px; }
-      .hero-title { font-size: 36px; }
-      .hero-subtitle { margin: 0 auto 24px; }
+      .hero { flex-direction: column; text-align: center; gap: 32px; padding: 40px 0; }
+      .hero-title { font-size: 34px; }
+      .hero-subtitle { margin: 0 auto 24px; font-size: 16px; }
       .search-box { margin: 0 auto 20px; width: 100%; }
       .trending-tags { justify-content: center; }
+      
       .hero-image { width: 100%; height: 320px; }
       .hero-character-img { max-height: 280px; }
 
-      .category-grid { grid-template-columns: repeat(3, 1fr); }
       .features-banner { grid-template-columns: 1fr; }
 
       .newsletter-box { flex-direction: column; gap: 20px; text-align: center; }
@@ -661,13 +787,8 @@
   <header>
     <div class="container nav-inner">
       <a href="#" class="logo-area" aria-label="KiKeno হোম">
-        <div class="logo-title">Ki<span>Keno</span></div>
-        <p class="logo-tagline">প্রশ্ন করুন, বুঝুন, সঠিক সিদ্ধান্ত নিন</p>
+        <img src="assets/images/logo.png" alt="কিকেনো">
       </a>
-      
-      <button class="mobile-menu-btn" id="menuToggle" aria-label="মেনু টগল করুন">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
 
       <ul class="nav-links" id="navMenu">
         <li><a href="#" class="active">হোম</a></li>
@@ -676,22 +797,31 @@
         <li><a href="#">তুলনা করুন</a></li>
         <li><a href="#">ব্লগ</a></li>
         <li><a href="#">বিশেষজ্ঞরা</a></li>
+        
+        <li class="mobile-nav-buttons">
+          <button class="btn-login">লগইন</button>
+          <button class="btn-signup">সাইন আপ করুন</button>
+        </li>
       </ul>
 
       <div class="nav-actions">
         <div class="nav-icons">
-          <button class="icon-btn" aria-label="অনুসন্ধান">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          </button>
-          <button class="icon-btn" aria-label="ডার্ক মোড">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <button class="icon-btn" id="themeToggle" aria-label="ডার্ক মোড টগল করুন" title="ডার্ক মোড">
+            <!-- Moon Icon (Default Light) -->
+            <svg id="moonIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            <!-- Sun Icon (Hidden initially) -->
+            <svg id="sunIcon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           </button>
           <button class="icon-btn" aria-label="নোটিফিকেশন">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
           </button>
         </div>
         <button class="btn-login">লগইন</button>
         <button class="btn-signup">সাইন আপ করুন</button>
+        
+        <button class="mobile-menu-btn" id="menuToggle" aria-label="মেনু টগল করুন">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -703,10 +833,10 @@
         <h1 class="hero-title">যা জানতে চান,<br>জিজ্ঞেস করুন <span>KiKeno</span> কে</h1>
         <p class="hero-subtitle">বাংলায় যে কোনো প্রশ্ন করুন এবং সহজ, নির্ভরযোগ্য উত্তর পান আমাদের কমিউনিটি ও AI এর সহায়তায়।</p>
         
-        <form class="search-box" action="#" method="GET" role="search">
+        <form class="search-box" action="#" method="GET" role="search" onsubmit="event.preventDefault();">
           <input type="text" placeholder="আজ আপনি কী জানতে চান?" aria-label="অনুসন্ধান করুন">
           <button type="submit" aria-label="খুঁজুন">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
           </button>
         </form>
 
@@ -715,7 +845,7 @@
           <a href="#" class="tag">ডেঙ্গু কি?</a>
           <a href="#" class="tag">FDR নাকি DPS?</a>
           <a href="#" class="tag">iPhone 16 কেন?</a>
-          <a href="#" class="tag">শেয়ার বাজারে বিনিয়োগ কিভাবে শুরু করবো?</a>
+          <a href="#" class="tag">শেয়ার বাজার</a>
         </div>
       </div>
 
@@ -736,39 +866,74 @@
       
       <div class="category-grid">
         <a href="#" class="cat-card">
-          <div class="cat-icon" style="color: #10B981; background: #ECFDF5;"><span role="img" aria-label="টাকা">💰</span></div>
+          <div class="cat-icon" style="color: #059669; background: rgba(16, 185, 129, 0.12);">
+            <!-- Money / Economy Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 12h.01M18 12h.01"/></svg>
+          </div>
           টাকা ও অর্থনীতি
         </a>
+        
         <a href="#" class="cat-card">
-          <div class="cat-icon" style="color: #EF4444; background: #FEF2F2;"><span role="img" aria-label="স্বাস্থ্য">❤️</span></div>
+          <div class="cat-icon" style="color: #DC2626; background: rgba(239, 68, 68, 0.12);">
+            <!-- Health Pulse Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
           স্বাস্থ্য
         </a>
+
         <a href="#" class="cat-card">
-          <div class="cat-icon" style="color: #3B82F6; background: #EFF6FF;"><span role="img" aria-label="প্রযুক্তি">💻</span></div>
+          <div class="cat-icon" style="color: #2563EB; background: rgba(59, 130, 246, 0.12);">
+            <!-- Tech / Code Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
           প্রযুক্তি
         </a>
+
         <a href="#" class="cat-card">
-          <div class="cat-icon" style="color: #8B5CF6; background: #F5F3FF;"><span role="img" aria-label="শিক্ষা">🎓</span></div>
+          <div class="cat-icon" style="color: #7C3AED; background: rgba(139, 92, 246, 0.12);">
+            <!-- Education Cap Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5zM6 12.5V17c0 1.66 2.69 3 6 3s6-1.34 6-3v-4.5"/></svg>
+          </div>
           শিক্ষা
         </a>
+
         <a href="#" class="cat-card">
-          <div class="cat-icon" style="color: #10B981; background: #ECFDF5;"><span role="img" aria-label="বাংলাদেশ">🇧🇩</span></div>
+          <div class="cat-icon" style="color: #059669; background: rgba(16, 185, 129, 0.12);">
+            <!-- Bangladesh Landmark / Map Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg>
+          </div>
           বাংলাদেশ
         </a>
+
         <a href="#" class="cat-card">
-          <div class="cat-icon" style="color: #F59E0B; background: #FFFBEB;"><span role="img" aria-label="বিশ্ব">🌐</span></div>
+          <div class="cat-icon" style="color: #D97706; background: rgba(245, 158, 11, 0.12);">
+            <!-- Globe Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
           বিশ্ব
         </a>
+
         <a href="#" class="cat-card">
-          <div class="cat-icon" style="color: #3B82F6; background: #EFF6FF;"><span role="img" aria-label="গাড়ি">🚗</span></div>
+          <div class="cat-icon" style="color: #2563EB; background: rgba(59, 130, 246, 0.12);">
+            <!-- Automobile Car Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17h14M5 17a2 2 0 01-2-2V9a2 2 0 012-2h14a2 2 0 012 2v6a2 2 0 01-2 2M7 17a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm10 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+          </div>
           গাড়ি
         </a>
+
         <a href="#" class="cat-card">
-          <div class="cat-icon" style="color: #EC4899; background: #FDF2F8;"><span role="img" aria-label="গ্যাজেট">📱</span></div>
+          <div class="cat-icon" style="color: #DB2777; background: rgba(236, 72, 153, 0.12);">
+            <!-- Smartphone Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
           মোবাইল ও গ্যাজেট
         </a>
+
         <a href="#" class="cat-card">
-          <div class="cat-icon" style="color: #F59E0B; background: #FFFBEB;"><span role="img" aria-label="লাইফস্টাইল">🏠</span></div>
+          <div class="cat-icon" style="color: #D97706; background: rgba(245, 158, 11, 0.12);">
+            <!-- Lifestyle Home Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+          </div>
           জীবনযাপন
         </a>
       </div>
@@ -783,12 +948,23 @@
         </div>
         
         <div class="question-list">
+          <!-- Question 1 -->
           <div class="question-item">
+            <div class="vote-box">
+              <button class="vote-btn btn-upvote" aria-label="আপভোট করুন">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+              </button>
+              <span class="vote-count">342</span>
+              <button class="vote-btn btn-downvote" aria-label="ডাউনভোট করুন">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+            
             <img src="assets/images/thumb_dengue.png" alt="ডেঙ্গু কি" class="q-img">
             <div class="q-content">
               <a href="#" class="q-title">ডেঙ্গু কি? লক্ষণ, চিকিৎসা ও প্রতিরোধ উপায়</a>
               <div class="q-meta">
-                <span class="q-category" style="color:#EF4444;">স্বাস্থ্য</span>
+                <span class="q-category" style="color:#DC2626;">স্বাস্থ্য</span>
                 <div class="q-stats">
                   <span>12.5K ভিউ</span>
                   <span>256 উত্তর</span>
@@ -796,16 +972,27 @@
               </div>
             </div>
             <button class="q-bookmark" aria-label="বুকমার্ক করুন">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
             </button>
           </div>
 
+          <!-- Question 2 -->
           <div class="question-item">
+            <div class="vote-box">
+              <button class="vote-btn btn-upvote" aria-label="আপভোট করুন">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+              </button>
+              <span class="vote-count">219</span>
+              <button class="vote-btn btn-downvote" aria-label="ডাউনভোট করুন">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+            
             <img src="assets/images/thumb_stock_market.png" alt="শেয়ার বাজার" class="q-img">
             <div class="q-content">
               <a href="#" class="q-title">শেয়ার বাজারে বিনিয়োগ কিভাবে শুরু করবেন?</a>
               <div class="q-meta">
-                <span class="q-category" style="color:#10B981;">ব্যবসা ও বিনিয়োগ</span>
+                <span class="q-category" style="color:#059669;">ব্যবসা ও বিনিয়োগ</span>
                 <div class="q-stats">
                   <span>8.7K ভিউ</span>
                   <span>193 উত্তর</span>
@@ -813,16 +1000,27 @@
               </div>
             </div>
             <button class="q-bookmark" aria-label="বুকমার্ক করুন">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
             </button>
           </div>
 
+          <!-- Question 3 -->
           <div class="question-item">
+            <div class="vote-box">
+              <button class="vote-btn btn-upvote" aria-label="আপভোট করুন">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+              </button>
+              <span class="vote-count">485</span>
+              <button class="vote-btn btn-downvote" aria-label="ডাউনভোট করুন">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+            
             <img src="assets/images/thumb_iphone16.png" alt="iPhone 16" class="q-img">
             <div class="q-content">
               <a href="#" class="q-title">iPhone 16 সিরিজ কি কেনা উচিত?</a>
               <div class="q-meta">
-                <span class="q-category" style="color:#3B82F6;">মোবাইল ও গ্যাজেট</span>
+                <span class="q-category" style="color:#2563EB;">মোবাইল ও গ্যাজেট</span>
                 <div class="q-stats">
                   <span>15.2K ভিউ</span>
                   <span>312 উত্তর</span>
@@ -830,16 +1028,27 @@
               </div>
             </div>
             <button class="q-bookmark" aria-label="বুকমার্ক করুন">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
             </button>
           </div>
 
+          <!-- Question 4 -->
           <div class="question-item">
+            <div class="vote-box">
+              <button class="vote-btn btn-upvote" aria-label="আপভোট করুন">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+              </button>
+              <span class="vote-count">198</span>
+              <button class="vote-btn btn-downvote" aria-label="ডাউনভোট করুন">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+            
             <img src="assets/images/thumb_fdr_dps.png" alt="FDR vs DPS" class="q-img">
             <div class="q-content">
               <a href="#" class="q-title">FDR নাকি DPS – কোনটিতে বেশি লাভ?</a>
               <div class="q-meta">
-                <span class="q-category" style="color:#10B981;">টাকা ও অর্থনীতি</span>
+                <span class="q-category" style="color:#059669;">টাকা ও অর্থনীতি</span>
                 <div class="q-stats">
                   <span>9.1K ভিউ</span>
                   <span>178 উত্তর</span>
@@ -847,16 +1056,27 @@
               </div>
             </div>
             <button class="q-bookmark" aria-label="বুকমার্ক করুন">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
             </button>
           </div>
 
+          <!-- Question 5 -->
           <div class="question-item">
+            <div class="vote-box">
+              <button class="vote-btn btn-upvote" aria-label="আপভোট করুন">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+              </button>
+              <span class="vote-count">164</span>
+              <button class="vote-btn btn-downvote" aria-label="ডাউনভোট করুন">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+            
             <img src="assets/images/thumb_passport.png" alt="পাসপোর্ট নিয়ম" class="q-img">
             <div class="q-content">
               <a href="#" class="q-title">পাসপোর্ট করতে কি কি লাগে? সম্পূর্ণ গাইডলাইন</a>
               <div class="q-meta">
-                <span class="q-category" style="color:#10B981;">বাংলাদেশ</span>
+                <span class="q-category" style="color:#059669;">বাংলাদেশ</span>
                 <div class="q-stats">
                   <span>6.3K ভিউ</span>
                   <span>142 উত্তর</span>
@@ -864,7 +1084,7 @@
               </div>
             </div>
             <button class="q-bookmark" aria-label="বুকমার্ক করুন">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
             </button>
           </div>
         </div>
@@ -876,37 +1096,89 @@
           <a href="#" class="view-all">সব দেখুন →</a>
         </div>
 
-        <div class="compare-tabs">
-          <span class="tab active">মোবাইল</span>
-          <span class="tab">বাইক</span>
-          <span class="tab">ব্যাংক</span>
-          <span class="tab">অন্যান্য</span>
+        <div class="compare-tabs" role="tablist">
+          <button class="tab active" role="tab" aria-selected="true" data-tab="mobile">মোবাইল</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="bike">বাইক</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="bank">ব্যাংক</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="other">অন্যান্য</button>
         </div>
 
-        <div class="compare-row">
-          <div class="compare-grid">
-            <div class="compare-card">
-              <h3 class="compare-title">iPhone 16</h3>
-              <img src="assets/images/compare_iphone16.png" alt="iPhone 16" class="c-img">
-            </div>
-            <div class="vs-badge">VS</div>
-            <div class="compare-card">
-              <h3 class="compare-title">Samsung S24</h3>
-              <img src="assets/images/compare_samsung24.png" alt="Samsung S24" class="c-img">
+        <!-- Mobile Comparisons -->
+        <div class="compare-tab-content active" id="compare-mobile">
+          <div class="compare-row">
+            <div class="compare-grid">
+              <div class="compare-card">
+                <h3 class="compare-title">iPhone 16</h3>
+                <img src="assets/images/compare_iphone16.png" alt="iPhone 16" class="c-img">
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="compare-card">
+                <h3 class="compare-title">Samsung S24</h3>
+                <img src="assets/images/compare_samsung24.png" alt="Samsung S24" class="c-img">
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="compare-row">
-          <div class="compare-grid">
-            <div class="compare-card">
-              <h3 class="compare-title">FDR</h3>
-              <div class="c-icon-box">🏛️</div>
+        <!-- Bike Comparisons -->
+        <div class="compare-tab-content" id="compare-bike">
+          <div class="compare-row">
+            <div class="compare-grid">
+              <div class="compare-card">
+                <h3 class="compare-title">Yamaha R15 V4</h3>
+                <div class="c-icon-box">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h-5l-3 6h7M12 12l2 5M18.5 17.5L14 8"/></svg>
+                </div>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="compare-card">
+                <h3 class="compare-title">Suzuki GSX-R150</h3>
+                <div class="c-icon-box">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h-5l-3 6h7M12 12l2 5M18.5 17.5L14 8"/></svg>
+                </div>
+              </div>
             </div>
-            <div class="vs-badge">VS</div>
-            <div class="compare-card">
-              <h3 class="compare-title">DPS</h3>
-              <div class="c-icon-box">🏦</div>
+          </div>
+        </div>
+
+        <!-- Bank Comparisons -->
+        <div class="compare-tab-content" id="compare-bank">
+          <div class="compare-row">
+            <div class="compare-grid">
+              <div class="compare-card">
+                <h3 class="compare-title">Fixed Deposit (FDR)</h3>
+                <div class="c-icon-box">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 10v11M9 10v11M15 10v11M19 10v11M12 3L2 10h20L12 3z"/></svg>
+                </div>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="compare-card">
+                <h3 class="compare-title">Deposit Scheme (DPS)</h3>
+                <div class="c-icon-box">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other Comparisons -->
+        <div class="compare-tab-content" id="compare-other">
+          <div class="compare-row">
+            <div class="compare-grid">
+              <div class="compare-card">
+                <h3 class="compare-title">Mac Studio M2</h3>
+                <div class="c-icon-box">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M2 20h20M12 16v4"/></svg>
+                </div>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="compare-card">
+                <h3 class="compare-title">Custom Windows PC</h3>
+                <div class="c-icon-box">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -918,28 +1190,39 @@
 
     <section class="features-banner">
       <div class="feature-item">
-        <div class="f-icon" style="color: #6366F1; background: #E0E7FF;">💬</div>
+        <div class="f-icon" style="color: #4F46E5; background: rgba(99, 102, 241, 0.12);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
         <div class="f-text">
           <h4>প্রশ্ন করুন</h4>
           <p>যে কোনো বিষয় সম্পর্কে প্রশ্ন করুন, দ্রুত উত্তর পান।</p>
         </div>
       </div>
+      
       <div class="feature-item">
-        <div class="f-icon" style="color: #10B981; background: #D1FAE5;">✅</div>
+        <div class="f-icon" style="color: #059669; background: rgba(16, 185, 129, 0.12);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        </div>
         <div class="f-text">
           <h4>বিশ্বস্ত উত্তর</h4>
           <p>কমিউনিটি ও বিশেষজ্ঞদের নির্ভরযোগ্য উত্তর।</p>
         </div>
       </div>
+
       <div class="feature-item">
-        <div class="f-icon" style="color: #F59E0B; background: #FEF3C7;">⚖️</div>
+        <div class="f-icon" style="color: #D97706; background: rgba(245, 158, 11, 0.12);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1zM2 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1zM7 21h10M12 3v18"/></svg>
+        </div>
         <div class="f-text">
           <h4>তুলনা করুন</h4>
           <p>বিভিন্ন অপশন তুলনা করে সঠিক সিদ্ধান্ত নিন।</p>
         </div>
       </div>
+
       <div class="feature-item">
-        <div class="f-icon" style="color: #3B82F6; background: #DBEAFE;">👥</div>
+        <div class="f-icon" style="color: #2563EB; background: rgba(59, 130, 246, 0.12);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 010 7.75"/></svg>
+        </div>
         <div class="f-text">
           <h4>এক্সপার্ট থেকে জানুন</h4>
           <p>বিশেষজ্ঞদের কাছ থেকে গভীর জ্ঞান অর্জন করুন।</p>
@@ -949,28 +1232,39 @@
 
     <section class="stats-banner">
       <div class="stat-item">
-        <div class="stat-icon">💬</div>
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
         <div class="stat-info">
           <h3>5,00,000+</h3>
           <p>সক্রিয় ব্যবহারকারী</p>
         </div>
       </div>
+
       <div class="stat-item">
-        <div class="stat-icon">🕒</div>
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
         <div class="stat-info">
           <h3>1,20,000+</h3>
           <p>প্রশ্নোত্তর</p>
         </div>
       </div>
+
       <div class="stat-item">
-        <div class="stat-icon">≡</div>
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l9-9l-4 0l2-5l-9 9l4 0z"/></svg>
+        </div>
         <div class="stat-info">
           <h3>25,000+</h3>
           <p>বিশেষজ্ঞ ও লেখক</p>
         </div>
       </div>
+
       <div class="stat-item">
-        <div class="stat-icon">🛡️</div>
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
         <div class="stat-info">
           <h3>100%</h3>
           <p>নির্ভরযোগ্য ও নিরাপদ</p>
@@ -981,15 +1275,15 @@
     <section class="newsletter-box">
       <div class="news-left">
         <div class="news-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
         </div>
         <div>
           <h4>নতুন কিছু মিস করবেন না</h4>
           <p>সাপ্তাহিক সেরা প্রশ্ন ও উত্তর পেতে আমাদের সাথে থাকুন।</p>
         </div>
       </div>
-      <form class="news-form" action="#" method="POST">
-        <input type="email" placeholder="আপনার ইমেইল দিন" aria-label="ইমেইল ঠিকানা">
+      <form class="news-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('ধন্যবাদ! আপনি সফলভাবে সাবস্ক্রাইব করেছেন।');">
+        <input type="email" placeholder="আপনার ইমেইল দিন" aria-label="ইমেইল ঠিকানা" required>
         <button type="submit">সাবস্ক্রাইব করুন</button>
       </form>
     </section>
@@ -1000,9 +1294,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <a href="#" class="logo-area">
-            <div class="logo-title">Ki<span>Keno</span></div>
-            <p class="logo-tagline">প্রশ্ন করুন, বুঝুন, সঠিক সিদ্ধান্ত নিন</p>
+          <a href="#" class="logo-area" aria-label="KiKeno হোম">
+            <img src="assets/images/logo.png" alt="কিকেনো">
           </a>
           <p class="footer-desc">KiKeno হলো বাংলায় জ্ঞান, তথ্য ও সিদ্ধান্ত নেওয়ার আপনার বিশ্বস্ত সঙ্গী।</p>
           <div class="social-icons">
@@ -1044,13 +1337,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        © 2024 KiKeno. সকল অধিকার সংরক্ষিত।
+        © 2026 KiKeno. সকল অধিকার সংরক্ষিত।
       </div>
     </div>
   </footer>
 
   <script>
-    // Mobile Navigation Toggle
+    // 1. Mobile Navigation Toggle
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
 
@@ -1060,12 +1353,94 @@
       });
     }
 
-    // Interactive Tabs for Compare Section
+    // 2. Dark Mode Toggle System
+    const themeToggle = document.getElementById('themeToggle');
+    const moonIcon = document.getElementById('moonIcon');
+    const sunIcon = document.getElementById('sunIcon');
+    const htmlEl = document.documentElement;
+
+    // Check system or saved preference
+    const savedTheme = localStorage.getItem('kikeno-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+    });
+
+    function setTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      localStorage.setItem('kikeno-theme', theme);
+      if (theme === 'dark') {
+        moonIcon.style.display = 'none';
+        sunIcon.style.display = 'block';
+      } else {
+        moonIcon.style.display = 'block';
+        sunIcon.style.display = 'none';
+      }
+    }
+
+    // 3. Interactive Compare Tabs
     const tabs = document.querySelectorAll('.compare-tabs .tab');
+    const contents = document.querySelectorAll('.compare-tab-content');
+
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
+        const targetTab = tab.getAttribute('data-tab');
+
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        contents.forEach(c => c.classList.remove('active'));
+
         tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const activeContent = document.getElementById(`compare-${targetTab}`);
+        if (activeContent) {
+          activeContent.classList.add('active');
+        }
+      });
+    });
+
+    // 4. Upvote / Downvote Interactivity
+    document.querySelectorAll('.question-item').forEach(item => {
+      const upBtn = item.querySelector('.btn-upvote');
+      const downBtn = item.querySelector('.btn-downvote');
+      const countEl = item.querySelector('.vote-count');
+      let initialCount = parseInt(countEl.textContent, 10);
+      let userState = 0; // 0 = none, 1 = up, -1 = down
+
+      upBtn.addEventListener('click', () => {
+        if (userState === 1) {
+          userState = 0;
+          upBtn.classList.remove('voted-up');
+        } else {
+          if (userState === -1) downBtn.classList.remove('voted-down');
+          userState = 1;
+          upBtn.classList.add('voted-up');
+        }
+        countEl.textContent = initialCount + userState;
+      });
+
+      downBtn.addEventListener('click', () => {
+        if (userState === -1) {
+          userState = 0;
+          downBtn.classList.remove('voted-down');
+        } else {
+          if (userState === 1) upBtn.classList.remove('voted-up');
+          userState = -1;
+          downBtn.classList.add('voted-down');
+        }
+        countEl.textContent = initialCount + userState;
+      });
+    });
+
+    // 5. Bookmark Toggle
+    document.querySelectorAll('.q-bookmark').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('bookmarked');
       });
     });
   </script>
