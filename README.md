@@ -66,7 +66,8 @@ KiKeno guides users through a 4-step knowledge journey:
 ```
 kikeno.com/
 ├── README.md               # Main project documentation and guide
-├── PROJECT_PLANNING.md     # Vision, user roles, feature breakdown & roadmap
+├── PROJECT_VISION.md       # Strategic vision, market opportunity & 5-year roadmap
+├── PROJECT_PLANNING.md     # Architecture, user roles, feature breakdown & milestones
 ├── DATABASE_PLANNING.md    # ER diagram, table schemas, relationships & SQL scripts
 ├── index.html              # Frontend web UI prototype & design system
 ├── v2.html                 # UI layout backup/variant
@@ -80,7 +81,8 @@ kikeno.com/
 
 Detailed project architecture and database design documents are available in the repository:
 
-- 📋 [**Project Planning (PROJECT_PLANNING.md)**](PROJECT_PLANNING.md) — Comprehensive vision, user roles, module definitions, non-functional requirements, and development milestones.
+- 🌟 [**Project Vision (PROJECT_VISION.md)**](PROJECT_VISION.md) — Strategic vision, problem & market opportunity analysis, user personas, monetization model, and 5-year growth roadmap.
+- 📋 [**Project Planning (PROJECT_PLANNING.md)**](PROJECT_PLANNING.md) — Technical architecture, user roles, module definitions, non-functional requirements, and development milestones.
 - 🗄️ [**Database Planning (DATABASE_PLANNING.md)**](DATABASE_PLANNING.md) — Entity-Relationship (ER) diagram, table schemas, index strategies, foreign keys, and ready-to-use DDL SQL migration scripts.
 
 ---
