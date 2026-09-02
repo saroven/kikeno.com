@@ -10,6 +10,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
   
+  <!-- SEO Rich Snippet Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "KiKeno",
+    "url": "https://kikeno.com",
+    "description": "বাংলায় প্রশ্ন করুন — তথ্য জানুন, বিষয়গুলো বুঝুন, অপশন তুলনা করুন এবং নতুন কিছু শিখুন।",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://kikeno.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  
   <style>
     /* =========================================================
        KIKENO DESIGN SYSTEM — BANGLA KNOWLEDGE & LEARNING ECOSYSTEM
@@ -82,6 +98,198 @@
     }
 
     ::selection { background: var(--accent); color: #fff; }
+
+    /* ── MARKETING COMPONENTS (HARMONIZED WITH DESIGN SYSTEM) ── */
+    .hero-trust-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-secondary);
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink-secondary);
+      font-weight: 500;
+    }
+    .trust-item .num {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .trust-item svg {
+      color: var(--green);
+      flex-shrink: 0;
+    }
+    .trust-sep {
+      color: var(--border-strong);
+      font-size: 10px;
+    }
+    .expert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius);
+      background: var(--blue-bg);
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .expert-badge--verified {
+      background: var(--green-bg);
+      color: var(--green);
+    }
+
+    /* ── FEED HEADER BAR ── */
+    .feed-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .feed-title-wrap .feed-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .feed-title-wrap .feed-subtitle {
+      font-size: 13px;
+      color: var(--ink-secondary);
+    }
+    .feed-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .feed-tab-group {
+      display: flex;
+      background: var(--surface-sunken);
+      padding: 3px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .feed-tab {
+      padding: 5px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      color: var(--ink-secondary);
+      background: transparent;
+      border: none;
+      border-radius: calc(var(--radius) - 2px);
+      cursor: pointer;
+      transition: all 0.15s var(--ease);
+    }
+    .feed-tab:hover {
+      color: var(--ink);
+    }
+    .feed-tab.active {
+      background: var(--surface-raised);
+      color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ── DEEP DIVE ARTICLES GRID SECTION ── */
+    .deep-dive-section {
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+    .deep-dive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .deep-card {
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+    }
+    .deep-card:hover {
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-md);
+    }
+    .deep-card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .deep-card-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 8px 0 10px;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    .deep-card-excerpt {
+      font-size: 14px;
+      color: var(--ink-secondary);
+      line-height: 1.55;
+    }
+
+    /* ── EXPERT SPOTLIGHT SECTION ── */
+    .expert-section {
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+    .expert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .expert-card {
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .expert-avatar-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      background: var(--blue-bg);
+      color: var(--blue);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .expert-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .expert-role {
+      font-size: 13px;
+      color: var(--ink-secondary);
+      margin: 4px 0 12px;
+    }
 
     a { color: inherit; text-decoration: none; }
 
@@ -1136,6 +1344,24 @@
           <a href="#" class="pop-tag">SSD vs HDD</a>
           <a href="#" class="pop-tag">ক্রেডিট কার্ড কী?</a>
         </div>
+
+        <!-- Social Proof Trust Bar -->
+        <div class="hero-trust-bar">
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <strong class="num">50,000+</strong> প্রশ্ন ও উত্তর
+          </span>
+          <span class="trust-sep">•</span>
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <strong class="num">100+</strong> ভেরিফাইড এক্সপার্ট
+          </span>
+          <span class="trust-sep">•</span>
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <strong class="num">100%</strong> ফ্রি কমিউনিটি
+          </span>
+        </div>
       </div>
 
       <!-- Right Side: Ecosystem Floating Composition -->
@@ -1210,7 +1436,21 @@
 
     <!-- ▸ FEED (LEFT COLUMN) -->
     <main class="main-feed" id="proshno">
-      <p class="feed-label">জনপ্রিয় প্রশ্ন ও উত্তর</p>
+      <!-- FEED HEADER & ACTION BAR -->
+      <div class="feed-header-bar">
+        <div class="feed-title-wrap">
+          <h3 class="feed-title">জনপ্রিয় প্রশ্ন ও উত্তর</h3>
+          <span class="feed-subtitle">কমিউনিটির সম্প্রতিক আলোচনা ও সমাধান</span>
+        </div>
+        <div class="feed-actions">
+          <div class="feed-tab-group" role="tablist">
+            <button class="feed-tab active" role="tab">জনপ্রিয়</button>
+            <button class="feed-tab" role="tab">সাম্প্রতিক</button>
+            <button class="feed-tab" role="tab">উত্তরহীন</button>
+          </div>
+          <button class="btn-solid" style="padding: 7px 16px; font-size:13px;">+ প্রশ্ন করুন</button>
+        </div>
+      </div>
 
       <!-- Q1 -->
       <article class="q-card">
@@ -1222,12 +1462,16 @@
         <div class="q-body">
           <div class="q-header">
             <span class="q-cat q-cat--tech">প্রযুক্তি</span>
-            <span class="q-time">২ ঘণ্টা আগে</span>
+            <span class="expert-badge expert-badge--verified">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              ভেরিফাইড টেক এক্সপার্ট
+            </span>
+            <span class="q-time">2h আগে</span>
           </div>
           <a href="#" class="q-title-link">iPhone এত দামি কেন? অন্যান্য স্মার্টফোনের সাথে মূল পার্থক্য</a>
           <p class="q-excerpt">Apple-এর iPhone স্মার্টফোনগুলো সাধারণ ফোনের তুলনায় বেশি ব্যয়বহুল হওয়ার প্রধান কারণ custom A-series silicon চিপ, প্রাইভেসি ও ইকোসিস্টেম লকিং।</p>
           <div class="q-footer">
-            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 15.2K</span>
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 15.2K views</span>
             <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 312</span>
             <img src="assets/images/thumb_iphone16.png" alt="" class="q-thumb">
           </div>
@@ -1239,7 +1483,7 @@
         <div class="bridge-info">
           <span class="bridge-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:4px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> ফ্রি লার্নিং গাইড</span>
           <h4 class="bridge-title">Laravel শেখার সম্পূর্ণ গাইড ও রোডম্যাপ</h4>
-          <p class="bridge-sub">১০টি সহজ অধ্যায়, বাস্তব কোড উদাহরণ ও প্র্যাকটিস নোটস সহ পড়ুন।</p>
+          <p class="bridge-sub">10টি সহজ অধ্যায়, বাস্তব কোড উদাহরণ ও প্র্যাকটিস নোটস সহ পড়ুন।</p>
         </div>
         <a href="#shikhun" class="btn-bridge">গাইড দেখুন →</a>
       </div>
@@ -1254,12 +1498,12 @@
         <div class="q-body">
           <div class="q-header">
             <span class="q-cat q-cat--health">স্বাস্থ্য</span>
-            <span class="q-time">৩ ঘণ্টা আগে</span>
+            <span class="q-time">3h আগে</span>
           </div>
           <a href="#" class="q-title-link">ডেঙ্গু কি? লক্ষণ, চিকিৎসা ও সঠিক প্রতিরোধ উপায়</a>
           <p class="q-excerpt">ডেঙ্গু জ্বর এডিস মশার মাধ্যমে ছড়ায়। প্রধান লক্ষণগুলো হলো তীব্র জ্বর, মাথাব্যথা, চোখের পেছনে ব্যথা এবং প্লাটিলেট কমে যাওয়া।</p>
           <div class="q-footer">
-            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 12.5K</span>
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 12.5K views</span>
             <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 256</span>
             <img src="assets/images/thumb_dengue.png" alt="" class="q-thumb">
           </div>
@@ -1276,12 +1520,12 @@
         <div class="q-body">
           <div class="q-header">
             <span class="q-cat q-cat--finance">টাকা ও অর্থনীতি</span>
-            <span class="q-time">৮ ঘণ্টা আগে</span>
+            <span class="q-time">8h আগে</span>
           </div>
           <a href="#" class="q-title-link">শেয়ার বাজারে বিনিয়োগ কিভাবে শুরু করবেন? নতুনদের গাইড</a>
           <p class="q-excerpt">ঢাকা স্টক এক্সচেঞ্জে বিও (BO) অ্যাকাউন্ট খোলার নিয়ম, ব্রোকারেজ হাউজ বাছাই এবং মৌলিক অ্যানালাইসিস শেখার সহজ গাইড।</p>
           <div class="q-footer">
-            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 8.7K</span>
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 8.7K views</span>
             <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 193</span>
             <img src="assets/images/thumb_stock_market.png" alt="" class="q-thumb">
           </div>
@@ -1298,12 +1542,12 @@
         <div class="q-body">
           <div class="q-header">
             <span class="q-cat q-cat--finance">টাকা ও অর্থনীতি</span>
-            <span class="q-time">১২ ঘণ্টা আগে</span>
+            <span class="q-time">12h আগে</span>
           </div>
           <a href="#" class="q-title-link">FDR নাকি DPS — কোনটিতে টাকা রাখা বেশি লাভজনক?</a>
           <p class="q-excerpt">স্থায়ী আমানত (FDR) এবং মাসিক ডিপিএস (DPS)-এর মধ্যে মেয়াদ, মুনাফার হার, ট্যাক্স এবং সুবিধাগুলোর বিস্তারিত তুলনা।</p>
           <div class="q-footer">
-            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 9.1K</span>
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 9.1K views</span>
             <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 178</span>
             <img src="assets/images/thumb_fdr_dps.png" alt="" class="q-thumb">
           </div>
@@ -1320,17 +1564,46 @@
         <div class="q-body">
           <div class="q-header">
             <span class="q-cat q-cat--bd">বাংলাদেশ</span>
-            <span class="q-time">গতকাল</span>
+            <span class="q-time">1d আগে</span>
           </div>
-          <a href="#" class="q-title-link">ই-পাসপোর্ট আবেদনের জন্য কি কি ডকুমেন্টস লাগে? ২০২৬ গাইড</a>
+          <a href="#" class="q-title-link">ই-পাসপোর্ট আবেদনের জন্য কি কি ডকুমেন্টস লাগে? 2026 গাইড</a>
           <p class="q-excerpt">অনলাইন আবেদন ফরম, জাতীয় পরিচয়পত্র (NID), ফি জমা দেওয়ার চালান এবং পুলিশ ভেরিফিকেশন সম্পর্কিত জরুরি তথ্য।</p>
           <div class="q-footer">
-            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 6.3K</span>
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 6.3K views</span>
             <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 142</span>
             <img src="assets/images/thumb_passport.png" alt="" class="q-thumb">
           </div>
         </div>
       </article>
+
+      <!-- 💡 UNDERSTAND & DEEP DIVES SECTION -->
+      <section class="deep-dive-section" id="bujhun">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:6px; color:var(--accent);"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 00-7-7z"/></svg> বুঝুন — গভীর বিশ্লেষণ ও ব্যাখ্যা</h2>
+            <p class="section-sub">জটিল প্রযুক্তি, অর্থনীতি ও স্বাস্থ্য বিষয়ক প্রশ্নগুলোর গভীর বিশ্লেষণমূলক আলোচনা পড়ুন।</p>
+          </div>
+          <a href="#" class="btn-ghost">সব গাইড দেখুন →</a>
+        </div>
+
+        <div class="deep-dive-grid">
+          <article class="deep-card">
+            <div>
+              <span class="deep-card-tag">প্রযুক্তি ব্যাখ্যা</span>
+              <h3 class="deep-card-title">SSD বনাম HDD: 2026 সালে আপনার জন্য কোনটা সেরা?</h3>
+              <p class="deep-card-excerpt">স্পিড, স্থায়িত্ব, রিড/রাইট পারফরম্যান্স এবং বাজেট অনুযায়ী সঠিক ড্রাইভ নির্বাচনের সম্পূর্ণ টেকনিক্যাল বিশ্লেষণ।</p>
+            </div>
+          </article>
+
+          <article class="deep-card">
+            <div>
+              <span class="deep-card-tag">ফাইন্যান্স গাইড</span>
+              <h3 class="deep-card-title">শেয়ার বাজারে শুরু করার আগে যেসব 3টি ভুল এড়িয়ে চলবেন</h3>
+              <p class="deep-card-excerpt">নতুন বিনিয়োগকারীদের জন্য ঝুঁকি ব্যবস্থাপনা, পোর্টফোলিও বৈচিত্রায়ন এবং স্টক অ্যানালাইসিসের প্রয়োজনীয় পয়েন্টসমূহ।</p>
+            </div>
+          </article>
+        </div>
+      </section>
 
       <!-- 🎓 LEARNING SECTION — FUTURE-READY -->
       <section class="learning-section" id="shikhun">
@@ -1348,7 +1621,7 @@
             <div>
               <span class="learn-type learn-type--free">FREE GUIDE</span>
               <h3 class="learn-card-title">Laravel Fundamentals</h3>
-              <p class="learn-card-meta">১০টি অধ্যায় · ১৫ মিনিট রিড · বিনামূল্যে</p>
+              <p class="learn-card-meta">10টি অধ্যায় · 15 min read · বিনামূল্যে</p>
             </div>
             <div class="learn-card-footer">
               <span style="font-size:12px; color:var(--green); font-weight:600;">বিনামূল্যে পড়ুন</span>
@@ -1361,7 +1634,7 @@
             <div>
               <span class="learn-type" style="background:var(--purple); color:#fff;">INTERACTIVE ROADMAP</span>
               <h3 class="learn-card-title">Full-Stack Web Development</h3>
-              <p class="learn-card-meta">১২টি অধ্যায় · হ্যান্ডস-অন কোড + রিডিং গাইড</p>
+              <p class="learn-card-meta">12টি অধ্যায় · হ্যান্ডস-অন কোড + রিডিং গাইড</p>
             </div>
             <div class="learn-card-footer">
               <span style="font-size:12px; color:var(--purple); font-weight:600;">রোডম্যাপ ও গাইড</span>
@@ -1435,6 +1708,41 @@
               </tr>
             </tbody>
           </table>
+
+        </div>
+      </section>
+
+      <!-- 👨‍⚕️ VERIFIED EXPERTS SPOTLIGHT SECTION -->
+      <section class="expert-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:6px; color:var(--blue);"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> ভেরিফাইড এক্সপার্ট ও অবদানকারী</h2>
+            <p class="section-sub">আমাদের সেরা বিষয়ভিত্তিক বিশেষজ্ঞদের কাছ থেকে নির্ভুল তথ্য ও সমাধান নিন।</p>
+          </div>
+          <a href="#" class="btn-ghost">এক্সপার্ট হিসেবে যোগ দিন →</a>
+        </div>
+
+        <div class="expert-grid">
+          <div class="expert-card">
+            <div class="expert-avatar-circle">ডা</div>
+            <h4 class="expert-name">ডা. তানভীর আহমেদ</h4>
+            <p class="expert-role">জনস্বাস্থ্য ও মেডিসিন বিশেষজ্ঞ · 450+ উত্তর</p>
+            <span class="expert-badge expert-badge--verified">ভেরিফাইড ডাক্তার</span>
+          </div>
+
+          <div class="expert-card">
+            <div class="expert-avatar-circle">সাজ</div>
+            <h4 class="expert-name">প্রকৌশলী সাজিদ হাসান</h4>
+            <p class="expert-role">সফটওয়্যার আর্কিটেক্ট · 320+ উত্তর</p>
+            <span class="expert-badge expert-badge--verified">ভেরিফাইড টেক এক্সপার্ট</span>
+          </div>
+
+          <div class="expert-card">
+            <div class="expert-avatar-circle">ফার</div>
+            <h4 class="expert-name">ফারহানা রহমান</h4>
+            <p class="expert-role">ফাইন্যান্সিয়াল কনসালট্যান্ট · 210+ উত্তর</p>
+            <span class="expert-badge expert-badge--verified">ভেরিফাইড ফাইন্যান্স এক্সপার্ট</span>
+          </div>
         </div>
       </section>
 
@@ -1503,19 +1811,19 @@
         <ol class="sidebar-list">
           <li class="sidebar-list-item">
             <a href="#"><span class="sidebar-num">01</span><span class="sidebar-link-text">iPhone এত দামি কেন?</span></a>
-            <span class="sidebar-meta">প্রযুক্তি · ১৫.২K ভিউ</span>
+            <span class="sidebar-meta">প্রযুক্তি · 15.2K views</span>
           </li>
           <li class="sidebar-list-item">
             <a href="#"><span class="sidebar-num">02</span><span class="sidebar-link-text">ডেঙ্গু প্রতিরোধে করণীয় কী?</span></a>
-            <span class="sidebar-meta">স্বাস্থ্য · ১২.৫K ভিউ</span>
+            <span class="sidebar-meta">স্বাস্থ্য · 12.5K views</span>
           </li>
           <li class="sidebar-list-item">
             <a href="#"><span class="sidebar-num">03</span><span class="sidebar-link-text">FDR নাকি DPS — কোনটা লাভজনক?</span></a>
-            <span class="sidebar-meta">অর্থনীতি · ৯.১K ভিউ</span>
+            <span class="sidebar-meta">অর্থনীতি · 9.1K views</span>
           </li>
           <li class="sidebar-list-item">
-            <a href="#"><span class="sidebar-num">04</span><span class="sidebar-link-text">ই-পাসপোর্ট আবেদন প্রক্রিয়া ২০২৬</span></a>
-            <span class="sidebar-meta">বাংলাদেশ · ৬.৩K ভিউ</span>
+            <a href="#"><span class="sidebar-num">04</span><span class="sidebar-link-text">ই-পাসপোর্ট আবেদন প্রক্রিয়া 2026</span></a>
+            <span class="sidebar-meta">বাংলাদেশ · 6.3K views</span>
           </li>
         </ol>
       </div>
@@ -1526,7 +1834,7 @@
         <ol class="sidebar-list">
           <li class="sidebar-list-item">
             <a href="#shikhun"><span class="sidebar-num">01</span><span class="sidebar-link-text">Web Development রোডম্যাপ</span></a>
-            <span class="sidebar-meta">ইন্টারেক্টিভ গাইড · ১২টি অধ্যায়</span>
+            <span class="sidebar-meta">ইন্টারেক্টিভ গাইড · 12টি অধ্যায়</span>
           </li>
           <li class="sidebar-list-item">
             <a href="#shikhun"><span class="sidebar-num">02</span><span class="sidebar-link-text">Python প্রোগ্রামিং মাস্টার নোটস</span></a>
@@ -1534,7 +1842,7 @@
           </li>
           <li class="sidebar-list-item">
             <a href="#shikhun"><span class="sidebar-num">03</span><span class="sidebar-link-text">Laravel Fundamentals Guide</span></a>
-            <span class="sidebar-meta">ফ্রি গাইড · ১০টি অধ্যায়</span>
+            <span class="sidebar-meta">ফ্রি গাইড · 10টি অধ্যায়</span>
           </li>
         </ol>
       </div>
@@ -1599,7 +1907,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© ২০২৬ KiKeno — জ্ঞান ও লার্নিং প্ল্যাটফর্ম</span>
+      <span>© 2026 KiKeno — জ্ঞান ও লার্নিং প্ল্যাটফর্ম</span>
       <div class="footer-bottom-links">
         <a href="#">গোপনীয়তা</a>
         <a href="#">শর্তাবলী</a>
