@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>প্রশ্ন করুন — KiKeno বাংলা Q&A</title>
+  <meta name="description" content="বাংলায় যেকোনো প্রশ্ন করুন। আমাদের বিশেষজ্ঞ কমিউনিটি দ্রুত নির্ভরযোগ্য উত্তর দেবে।">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <style>
+    .ask-form-card { background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow-sm); max-width: 760px; }
+    .form-group { margin-bottom: 24px; }
+    .form-label { display: block; font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .form-hint { font-size: 12px; color: var(--ink-tertiary); margin-top: 4px; }
+    .form-input { width: 100%; padding: 12px 16px; font-size: 15px; font-family: var(--font-body); color: var(--ink); background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); outline: none; transition: border-color 0.2s; }
+    .form-input:focus { border-color: var(--accent); }
+    .form-textarea { width: 100%; padding: 14px 16px; font-size: 15px; font-family: var(--font-body); color: var(--ink); background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); outline: none; resize: vertical; min-height: 140px; transition: border-color 0.2s; line-height: 1.7; }
+    .form-textarea:focus { border-color: var(--accent); }
+    .category-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .cat-chip { padding: 6px 14px; font-size: 13px; font-weight: 600; font-family: var(--font-body); color: var(--ink-secondary); background: var(--surface); border: 1.5px solid var(--border); border-radius: 20px; cursor: pointer; transition: all 0.15s; }
+    .cat-chip:hover { border-color: var(--border-strong); color: var(--ink); }
+    .cat-chip.selected { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+    .form-submit { padding: 14px 36px; font-size: 16px; font-weight: 700; font-family: var(--font-body); color: #fff; background: var(--accent); border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.15s; }
+    .form-submit:hover { background: var(--accent-hover); }
+    .tips-card { background: var(--surface-sunken); border-radius: var(--radius-lg); padding: 24px; }
+    .tips-card h3 { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 14px; }
+    .tips-list { list-style: none; }
+    .tips-list li { font-size: 13px; color: var(--ink-secondary); padding: 6px 0; display: flex; gap: 10px; align-items: flex-start; border-bottom: 1px solid var(--border); }
+    .tips-list li:last-child { border-bottom: none; }
+    .tip-icon { width: 20px; height: 20px; border-radius: 50%; background: var(--green-bg); color: var(--green); display: grid; place-items: center; flex-shrink: 0; font-size: 11px; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<!-- ▸ NAVBAR -->
+<header class="navbar">
+  <div class="wrap navbar-inner">
+    <div class="navbar-left">
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="কিকেনো?"></a>
+      <ul class="nav-menu">
+        <li><a href="index.html">কি কেন?</a></li>
+        <li><a href="janun.html">জানুন</a></li>
+        <li><a href="shikhun.html">শিখুন <span class="nav-badge">NEW</span></a></li>
+        <li><a href="tulona.html">তুলনা</a></li>
+        <li><a href="proshno.html" class="current">প্রশ্ন করুন</a></li>
+      </ul>
+    </div>
+    <div class="navbar-right">
+      <button class="icon-circle" id="themeToggle" title="থিম বদলান">
+        <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg id="iconSun" style="display:none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="btn-ghost">লগইন</button>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="মেনু">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-mobile" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">কি কেন?</a></li>
+      <li><a href="janun.html">জানুন</a></li>
+      <li><a href="shikhun.html">শিখুন</a></li>
+      <li><a href="tulona.html">তুলনা</a></li>
+      <li><a href="proshno.html">প্রশ্ন করুন</a></li>
+    </ul>
+    <div style="display:flex; gap:10px; margin-top:12px;">
+      <button class="btn-ghost" style="flex:1;">লগইন</button>
+      <button class="btn-solid" style="flex:1;">প্রশ্ন করুন</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ▸ PAGE HEADER -->
+<div class="page-header">
+  <div class="wrap page-header-inner">
+    <div>
+      <p class="page-eyebrow">প্রশ্ন করুন — Ask</p>
+      <h1 class="page-title">আপনার প্রশ্নটি লিখুন</h1>
+      <p class="page-subtitle">কমিউনিটি ও বিশেষজ্ঞরা দ্রুত নির্ভরযোগ্য উত্তর দেবেন।</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+      <span class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><strong class="num">100%</strong> ফ্রি</span>
+      <span class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><strong class="num">100+</strong> বিশেষজ্ঞ</span>
+    </div>
+  </div>
+</div>
+
+<!-- ▸ MAIN CONTENT -->
+<div class="wrap" style="padding-top: 40px; padding-bottom: 60px;">
+  <div style="display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: flex-start;">
+
+    <!-- FORM -->
+    <div class="ask-form-card">
+      <form onsubmit="event.preventDefault(); alert('আপনার প্রশ্নটি সফলভাবে জমা দেওয়া হয়েছে!');">
+        <div class="form-group">
+          <label class="form-label" for="q-title">প্রশ্নের শিরোনাম *</label>
+          <input class="form-input" type="text" id="q-title" placeholder="যেমন: iPhone এত দামি কেন?" required>
+          <p class="form-hint">সংক্ষেপে কিন্তু স্পষ্টভাবে প্রশ্নটি লিখুন।</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">বিষয় বেছে নিন *</label>
+          <div class="category-chips">
+            <button type="button" class="cat-chip" onclick="this.classList.toggle('selected')">প্রযুক্তি</button>
+            <button type="button" class="cat-chip" onclick="this.classList.toggle('selected')">স্বাস্থ্য</button>
+            <button type="button" class="cat-chip" onclick="this.classList.toggle('selected')">টাকা ও অর্থনীতি</button>
+            <button type="button" class="cat-chip" onclick="this.classList.toggle('selected')">শিক্ষা ও কেরিয়ার</button>
+            <button type="button" class="cat-chip" onclick="this.classList.toggle('selected')">বাংলাদেশ</button>
+            <button type="button" class="cat-chip" onclick="this.classList.toggle('selected')">মোবাইল ও গ্যাজেট</button>
+            <button type="button" class="cat-chip" onclick="this.classList.toggle('selected')">আইন ও অধিকার</button>
+            <button type="button" class="cat-chip" onclick="this.classList.toggle('selected')">গাড়ি</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="q-body">বিস্তারিত লিখুন</label>
+          <textarea class="form-textarea" id="q-body" placeholder="প্রশ্নের পটভূমি, আপনি কী জানতে চান, কোনো প্রাসঙ্গিক তথ্য থাকলে লিখুন…"></textarea>
+          <p class="form-hint">বিস্তারিত লিখলে ভালো উত্তর পাওয়ার সম্ভাবনা বেশি।</p>
+        </div>
+
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label" for="q-name">আপনার নাম (ঐচ্ছিক)</label>
+          <input class="form-input" type="text" id="q-name" placeholder="বেনামে প্রশ্ন করতে পারেন">
+        </div>
+
+        <div style="margin-top:28px; display:flex; align-items:center; gap:16px;">
+          <button type="submit" class="form-submit">প্রশ্ন জমা দিন →</button>
+          <span style="font-size:13px;color:var(--ink-tertiary);">গড়ে 2-4 ঘণ্টায় উত্তর আসে</span>
+        </div>
+      </form>
+    </div>
+
+    <!-- TIPS SIDEBAR -->
+    <div>
+      <div class="tips-card" style="margin-bottom:20px;">
+        <h3>ভালো প্রশ্নের টিপস</h3>
+        <ul class="tips-list">
+          <li><span class="tip-icon">1</span>প্রশ্নটি সংক্ষিপ্ত কিন্তু স্পষ্টভাবে লিখুন।</li>
+          <li><span class="tip-icon">2</span>সঠিক ক্যাটাগরি বেছে নিন।</li>
+          <li><span class="tip-icon">3</span>ইতিমধ্যে খোঁজার চেষ্টা করেছেন তা উল্লেখ করুন।</li>
+          <li><span class="tip-icon">4</span>প্রয়োজনে উদাহরণ বা প্রসঙ্গ যোগ করুন।</li>
+        </ul>
+      </div>
+
+      <div class="tips-card">
+        <h3>জনপ্রিয় সাম্প্রতিক প্রশ্ন</h3>
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item"><a href="janun.html"><span class="sidebar-link-text">iPhone এত দামি কেন?</span></a><span class="sidebar-meta">15.2K views</span></li>
+          <li class="sidebar-list-item"><a href="janun.html"><span class="sidebar-link-text">ডেঙ্গু জ্বরের চিকিৎসা কী?</span></a><span class="sidebar-meta">12.5K views</span></li>
+          <li class="sidebar-list-item"><a href="janun.html"><span class="sidebar-link-text">FDR নাকি DPS কোনটি ভালো?</span></a><span class="sidebar-meta">9.1K views</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ▸ FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="কিকেনো?"></a>
+        <p class="footer-brand-text">বাংলায় জ্ঞান, তথ্য ও সিদ্ধান্ত নেওয়ার আপনার বিশ্বস্ত সঙ্গী।</p>
+      </div>
+      <div class="footer-col">
+        <h5>ইকোসিস্টেম</h5>
+        <ul>
+          <li><a href="janun.html">জানুন ও উত্তর</a></li>
+          <li><a href="shikhun.html">শিখুন ও কোর্স</a></li>
+          <li><a href="tulona.html">তুলনা ও গাইড</a></li>
+          <li><a href="proshno.html">প্রশ্ন করুন</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>সহায়তা</h5>
+        <ul>
+          <li><a href="#">সাহায্য কেন্দ্র</a></li>
+          <li><a href="#">যোগাযোগ</a></li>
+          <li><a href="#">গোপনীয়তা নীতি</a></li>
+          <li><a href="#">শর্তাবলী</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>যোগাযোগ</h5>
+        <ul>
+          <li><a href="mailto:info@kikeno.com">info@kikeno.com</a></li>
+          <li><a href="#">ঢাকা, বাংলাদেশ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 KiKeno — জ্ঞান ও লার্নিং প্ল্যাটফর্ম</span>
+      <div class="footer-bottom-links"><a href="#">গোপনীয়তা</a><a href="#">শর্তাবলী</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const moon = document.getElementById('iconMoon');
+  const sun = document.getElementById('iconSun');
+  const html = document.documentElement;
+  const saved = localStorage.getItem('kikeno-theme') || 'light';
+  html.setAttribute('data-theme', saved);
+  if (saved === 'dark') { moon.style.display = 'none'; sun.style.display = 'block'; }
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('kikeno-theme', next);
+    moon.style.display = next === 'dark' ? 'none' : 'block';
+    sun.style.display = next === 'dark' ? 'block' : 'none';
+  });
+  document.getElementById('mobileToggle').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+</script>
+</body>
+</html>

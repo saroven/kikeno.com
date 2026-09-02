@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>তুলনা — KiKeno বাংলা তুলনা প্ল্যাটফর্ম</title>
+  <meta name="description" content="বাংলায় পণ্য, সেবা ও বিষয়গুলো পাশাপাশি তুলনা করুন। স্মার্টফোন, ল্যাপটপ, ব্যাংক, বীমা, ফ্রেমওয়ার্ক — সবকিছু এক জায়গায়।">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <style>
+    .compare-search-bar { background: var(--surface-raised); border: 1.5px solid var(--border-strong); border-radius: var(--radius-lg); padding: 4px; display: flex; align-items: center; max-width: 600px; box-shadow: var(--shadow-sm); transition: border-color 0.2s; }
+    .compare-search-bar:focus-within { border-color: var(--accent); }
+    .compare-search-bar input { flex: 1; padding: 12px 16px; font-size: 15px; font-family: var(--font-body); color: var(--ink); background: transparent; border: none; outline: none; }
+    .compare-search-bar button { padding: 10px 20px; background: var(--accent); color: #fff; border: none; border-radius: var(--radius); font-size: 14px; font-weight: 600; font-family: var(--font-body); cursor: pointer; transition: background 0.15s; }
+    .compare-search-bar button:hover { background: var(--accent-hover); }
+    .compare-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 24px; }
+    .compare-link-card { background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: border-color 0.2s, box-shadow 0.2s; }
+    .compare-link-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
+    .cmp-pair { display: flex; align-items: center; gap: 10px; }
+    .cmp-name { font-size: 15px; font-weight: 700; color: var(--ink); }
+    .cmp-meta { font-size: 12px; color: var(--ink-tertiary); margin-top: 2px; }
+    .cmp-vs { font-size: 11px; font-weight: 700; color: var(--ink-faint); background: var(--surface-sunken); padding: 3px 8px; border-radius: 12px; }
+    .full-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+    .full-table th { background: var(--surface-sunken); color: var(--ink); font-weight: 700; font-size: 14px; padding: 14px 18px; text-align: left; border-bottom: 2px solid var(--border-strong); }
+    .full-table th:not(:first-child) { text-align: center; }
+    .full-table td { padding: 12px 18px; font-size: 14px; color: var(--ink-secondary); border-bottom: 1px solid var(--border); }
+    .full-table td:not(:first-child) { text-align: center; }
+    .full-table tr:last-child td { border-bottom: none; }
+    .full-table .row-label { font-weight: 600; color: var(--ink); font-size: 14px; }
+    .check-yes { color: var(--green); font-size: 18px; }
+    .check-no { color: var(--ink-faint); font-size: 18px; }
+    .highlight-col { background: var(--accent-bg); }
+  </style>
+</head>
+<body>
+
+<!-- ▸ NAVBAR -->
+<header class="navbar">
+  <div class="wrap navbar-inner">
+    <div class="navbar-left">
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="কিকেনো?"></a>
+      <ul class="nav-menu">
+        <li><a href="index.html">কি কেন?</a></li>
+        <li><a href="janun.html">জানুন</a></li>
+        <li><a href="shikhun.html">শিখুন <span class="nav-badge">NEW</span></a></li>
+        <li><a href="tulona.html" class="current">তুলনা</a></li>
+        <li><a href="proshno.html">প্রশ্ন করুন</a></li>
+      </ul>
+    </div>
+    <div class="navbar-right">
+      <button class="icon-circle" id="themeToggle" title="থিম বদলান">
+        <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg id="iconSun" style="display:none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="btn-ghost">লগইন</button>
+      <a href="proshno.html" class="btn-solid">প্রশ্ন করুন</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="মেনু">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-mobile" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">কি কেন?</a></li>
+      <li><a href="janun.html">জানুন</a></li>
+      <li><a href="shikhun.html">শিখুন</a></li>
+      <li><a href="tulona.html">তুলনা</a></li>
+      <li><a href="proshno.html">প্রশ্ন করুন</a></li>
+    </ul>
+    <div style="display:flex; gap:10px; margin-top:12px;">
+      <button class="btn-ghost" style="flex:1;">লগইন</button>
+      <a href="proshno.html" class="btn-solid" style="flex:1;">প্রশ্ন করুন</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ▸ PAGE HEADER -->
+<div class="page-header">
+  <div class="wrap page-header-inner">
+    <div>
+      <p class="page-eyebrow">তুলনা — Compare</p>
+      <h1 class="page-title">পাশাপাশি তুলনা করুন, সঠিক সিদ্ধান্ত নিন</h1>
+      <p class="page-subtitle">স্মার্টফোন, ল্যাপটপ, ব্যাংক, ফ্রেমওয়ার্ক — যেকোনো দুটো বিষয়ের বিস্তারিত তুলনা।</p>
+    </div>
+  </div>
+</div>
+
+<!-- ▸ COMPARE SEARCH -->
+<div style="background: var(--surface-sunken); border-bottom: 1px solid var(--border); padding: 20px 0;">
+  <div class="wrap">
+    <form class="compare-search-bar" onsubmit="event.preventDefault();">
+      <input type="text" placeholder="যেমন: iPhone 16 vs Samsung S25, Laravel vs Django…">
+      <button type="submit">তুলনা করুন →</button>
+    </form>
+  </div>
+</div>
+
+<!-- ▸ MAIN CONTENT -->
+<div class="wrap" style="padding-top: 40px; padding-bottom: 60px;">
+
+  <!-- POPULAR COMPARISONS -->
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">জনপ্রিয় তুলনা</h2>
+      <p class="section-sub">সবচেয়ে বেশি দেখা তুলনাগুলো</p>
+    </div>
+  </div>
+  <div class="compare-cards-grid">
+    <a href="#php-vs-python" class="compare-link-card">
+      <div class="cmp-pair">
+        <span style="font-size:28px;">🐘</span>
+        <div><p class="cmp-name">PHP</p><p class="cmp-meta">ওয়েব ডেভেলপমেন্ট</p></div>
+      </div>
+      <span class="cmp-vs">vs</span>
+      <div class="cmp-pair">
+        <span style="font-size:28px;">🐍</span>
+        <div><p class="cmp-name">Python</p><p class="cmp-meta">ব্যাকএন্ড / AI</p></div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--ink-faint);flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a href="#iphone-vs-samsung" class="compare-link-card">
+      <div class="cmp-pair">
+        <span style="font-size:28px;">📱</span>
+        <div><p class="cmp-name">iPhone 16</p><p class="cmp-meta">Apple iOS</p></div>
+      </div>
+      <span class="cmp-vs">vs</span>
+      <div class="cmp-pair">
+        <span style="font-size:28px;">📱</span>
+        <div><p class="cmp-name">Galaxy S25</p><p class="cmp-meta">Samsung Android</p></div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--ink-faint);flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a href="#ssd-vs-hdd" class="compare-link-card">
+      <div class="cmp-pair">
+        <span style="font-size:28px;">💿</span>
+        <div><p class="cmp-name">SSD</p><p class="cmp-meta">Solid State Drive</p></div>
+      </div>
+      <span class="cmp-vs">vs</span>
+      <div class="cmp-pair">
+        <span style="font-size:28px;">💾</span>
+        <div><p class="cmp-name">HDD</p><p class="cmp-meta">Hard Disk Drive</p></div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--ink-faint);flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a href="#fdr-vs-dps" class="compare-link-card">
+      <div class="cmp-pair">
+        <span style="font-size:28px;">🏦</span>
+        <div><p class="cmp-name">FDR</p><p class="cmp-meta">স্থায়ী আমানত</p></div>
+      </div>
+      <span class="cmp-vs">vs</span>
+      <div class="cmp-pair">
+        <span style="font-size:28px;">📊</span>
+        <div><p class="cmp-name">DPS</p><p class="cmp-meta">মাসিক আমানত</p></div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--ink-faint);flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </div>
+
+  <!-- FEATURED COMPARISON TABLE -->
+  <div id="php-vs-python" style="margin-top:56px;">
+    <div class="matrix-card">
+      <div class="matrix-header">
+        <h2 class="matrix-title">PHP vs Python — বিস্তারিত তুলনা</h2>
+        <span class="expert-badge expert-badge--verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ভেরিফাইড</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="full-table">
+          <thead>
+            <tr>
+              <th style="width:220px;">বৈশিষ্ট্য</th>
+              <th>PHP 🐘</th>
+              <th class="highlight-col">Python 🐍</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-label">মূল ব্যবহার</td><td>ওয়েব ব্যাকএন্ড</td><td class="highlight-col">ওয়েব, AI, ডেটা সায়েন্স</td></tr>
+            <tr><td class="row-label">শেখার সহজতা</td><td><span class="matrix-stars">★★★</span></td><td class="highlight-col"><span class="matrix-stars">★★★★★</span></td></tr>
+            <tr><td class="row-label">জনপ্রিয় ফ্রেমওয়ার্ক</td><td>Laravel, Symfony</td><td class="highlight-col">Django, FastAPI, Flask</td></tr>
+            <tr><td class="row-label">AI / ML সাপোর্ট</td><td><span class="check-no">✗</span></td><td class="highlight-col"><span class="check-yes">✓</span></td></tr>
+            <tr><td class="row-label">WordPress হোস্টিং</td><td><span class="check-yes">✓</span></td><td class="highlight-col"><span class="check-no">✗</span></td></tr>
+            <tr><td class="row-label">চাকরির বাজার (BD)</td><td>বেশি</td><td class="highlight-col">দ্রুত বাড়ছে</td></tr>
+            <tr><td class="row-label">মাসিক বেতন শুরু</td><td>৳20,000</td><td class="highlight-col">৳25,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ▸ FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="কিকেনো?"></a>
+        <p class="footer-brand-text">বাংলায় জ্ঞান, তথ্য ও সিদ্ধান্ত নেওয়ার আপনার বিশ্বস্ত সঙ্গী।</p>
+      </div>
+      <div class="footer-col">
+        <h5>ইকোসিস্টেম</h5>
+        <ul>
+          <li><a href="janun.html">জানুন ও উত্তর</a></li>
+          <li><a href="shikhun.html">শিখুন ও কোর্স</a></li>
+          <li><a href="tulona.html">তুলনা ও গাইড</a></li>
+          <li><a href="proshno.html">প্রশ্ন করুন</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>সহায়তা</h5>
+        <ul>
+          <li><a href="#">সাহায্য কেন্দ্র</a></li>
+          <li><a href="#">যোগাযোগ</a></li>
+          <li><a href="#">গোপনীয়তা নীতি</a></li>
+          <li><a href="#">শর্তাবলী</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>যোগাযোগ</h5>
+        <ul>
+          <li><a href="mailto:info@kikeno.com">info@kikeno.com</a></li>
+          <li><a href="#">ঢাকা, বাংলাদেশ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 KiKeno — জ্ঞান ও লার্নিং প্ল্যাটফর্ম</span>
+      <div class="footer-bottom-links"><a href="#">গোপনীয়তা</a><a href="#">শর্তাবলী</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const moon = document.getElementById('iconMoon');
+  const sun = document.getElementById('iconSun');
+  const html = document.documentElement;
+  const saved = localStorage.getItem('kikeno-theme') || 'light';
+  html.setAttribute('data-theme', saved);
+  if (saved === 'dark') { moon.style.display = 'none'; sun.style.display = 'block'; }
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('kikeno-theme', next);
+    moon.style.display = next === 'dark' ? 'none' : 'block';
+    sun.style.display = next === 'dark' ? 'block' : 'none';
+  });
+  document.getElementById('mobileToggle').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+</script>
+</body>
+</html>

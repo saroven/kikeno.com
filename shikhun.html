@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>শিখুন — KiKeno বাংলা লার্নিং প্ল্যাটফর্ম</title>
+  <meta name="description" content="বাংলায় ফ্রি কোর্স, লার্নিং পাথ ও স্টাডি গাইড। প্রযুক্তি, অর্থনীতি, স্বাস্থ্য ও আরও অনেক বিষয়ে দক্ষ হয়ে উঠুন।">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <style>
+    .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 24px; }
+    .category-card { background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; display: flex; gap: 16px; align-items: flex-start; transition: border-color 0.2s, box-shadow 0.2s; cursor: pointer; }
+    .category-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
+    .cat-icon { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; font-size: 22px; flex-shrink: 0; }
+    .cat-title { font-size: 16px; font-weight: 700; color: var(--ink); }
+    .cat-sub { font-size: 13px; color: var(--ink-secondary); margin-top: 4px; }
+    .cat-count { font-size: 12px; font-weight: 600; color: var(--ink-tertiary); margin-top: 8px; }
+    .progress-bar { height: 4px; background: var(--border); border-radius: 2px; margin-top: 10px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 2px; background: var(--accent); }
+  </style>
+</head>
+<body>
+
+<!-- ▸ NAVBAR -->
+<header class="navbar">
+  <div class="wrap navbar-inner">
+    <div class="navbar-left">
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="কিকেনো?"></a>
+      <ul class="nav-menu">
+        <li><a href="index.html">কি কেন?</a></li>
+        <li><a href="janun.html">জানুন</a></li>
+        <li><a href="shikhun.html" class="current">শিখুন <span class="nav-badge">NEW</span></a></li>
+        <li><a href="tulona.html">তুলনা</a></li>
+        <li><a href="proshno.html">প্রশ্ন করুন</a></li>
+      </ul>
+    </div>
+    <div class="navbar-right">
+      <button class="icon-circle" id="themeToggle" title="থিম বদলান">
+        <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg id="iconSun" style="display:none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="btn-ghost">লগইন</button>
+      <a href="proshno.html" class="btn-solid">প্রশ্ন করুন</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="মেনু">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-mobile" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">কি কেন?</a></li>
+      <li><a href="janun.html">জানুন</a></li>
+      <li><a href="shikhun.html">শিখুন</a></li>
+      <li><a href="tulona.html">তুলনা</a></li>
+      <li><a href="proshno.html">প্রশ্ন করুন</a></li>
+    </ul>
+    <div style="display:flex; gap:10px; margin-top:12px;">
+      <button class="btn-ghost" style="flex:1;">লগইন</button>
+      <a href="proshno.html" class="btn-solid" style="flex:1;">প্রশ্ন করুন</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ▸ PAGE HEADER -->
+<div class="page-header">
+  <div class="wrap page-header-inner">
+    <div>
+      <p class="page-eyebrow">শিখুন — Learn</p>
+      <h1 class="page-title">বাংলায় শিখুন, এগিয়ে যান</h1>
+      <p class="page-subtitle">ফ্রি কোর্স, লার্নিং পাথ ও বিশেষজ্ঞ গাইড — সম্পূর্ণ বাংলায়।</p>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <span class="expert-badge expert-badge--verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 100% ফ্রি কনটেন্ট</span>
+    </div>
+  </div>
+</div>
+
+<!-- ▸ TOPICS BAR -->
+<div class="topics-bar">
+  <div class="wrap">
+    <ul class="topics-list">
+      <li><a class="topic-pill selected" href="#">সব বিষয়</a></li>
+      <li><a class="topic-pill" href="#">প্রযুক্তি</a></li>
+      <li><a class="topic-pill" href="#">অর্থনীতি</a></li>
+      <li><a class="topic-pill" href="#">স্বাস্থ্য</a></li>
+      <li><a class="topic-pill" href="#">ক্যারিয়ার</a></li>
+      <li><a class="topic-pill" href="#">আইন ও অধিকার</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ▸ MAIN CONTENT -->
+<div class="wrap" style="padding-top:40px; padding-bottom:60px;">
+
+  <!-- CATEGORIES -->
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">বিষয়ভিত্তিক শিখুন</h2>
+      <p class="section-sub">আপনার পছন্দের বিষয় বেছে নিন</p>
+    </div>
+  </div>
+  <div class="category-grid">
+    <a href="#" class="category-card">
+      <div class="cat-icon" style="background:var(--blue-bg);color:var(--blue);">💻</div>
+      <div>
+        <p class="cat-title">প্রযুক্তি ও প্রোগ্রামিং</p>
+        <p class="cat-sub">Laravel, Python, JavaScript শিখুন</p>
+        <p class="cat-count">24টি কোর্স · 180+ লেসন</p>
+        <div class="progress-bar"><div class="progress-fill" style="width:65%;background:var(--blue);"></div></div>
+      </div>
+    </a>
+    <a href="#" class="category-card">
+      <div class="cat-icon" style="background:var(--green-bg);color:var(--green);">💰</div>
+      <div>
+        <p class="cat-title">টাকা ও ব্যক্তিগত অর্থনীতি</p>
+        <p class="cat-sub">সঞ্চয়, বিনিয়োগ ও বাজেট ম্যানেজমেন্ট</p>
+        <p class="cat-count">12টি কোর্স · 96+ লেসন</p>
+        <div class="progress-bar"><div class="progress-fill" style="width:40%;background:var(--green);"></div></div>
+      </div>
+    </a>
+    <a href="#" class="category-card">
+      <div class="cat-icon" style="background:#fbeaea;color:#b82525;">🏥</div>
+      <div>
+        <p class="cat-title">স্বাস্থ্য ও সুস্থতা</p>
+        <p class="cat-sub">রোগ প্রতিরোধ ও সুস্থ জীবনযাপন</p>
+        <p class="cat-count">18টি কোর্স · 140+ লেসন</p>
+        <div class="progress-bar"><div class="progress-fill" style="width:55%;background:#b82525;"></div></div>
+      </div>
+    </a>
+    <a href="#" class="category-card">
+      <div class="cat-icon" style="background:var(--purple-bg);color:var(--purple);">🎓</div>
+      <div>
+        <p class="cat-title">ক্যারিয়ার ও দক্ষতা</p>
+        <p class="cat-sub">CV লেখা, ইন্টারভিউ ও ফ্রিল্যান্সিং</p>
+        <p class="cat-count">16টি কোর্স · 120+ লেসন</p>
+        <div class="progress-bar"><div class="progress-fill" style="width:80%;background:var(--purple);"></div></div>
+      </div>
+    </a>
+  </div>
+
+  <!-- COURSES -->
+  <div class="section-header" style="margin-top:56px;">
+    <div>
+      <h2 class="section-title">জনপ্রিয় কোর্সসমূহ</h2>
+      <p class="section-sub">সম্পূর্ণ বাংলায় সেরা লার্নিং রিসোর্স</p>
+    </div>
+    <a href="#" class="btn-ghost">সব কোর্স →</a>
+  </div>
+  <div class="learn-grid">
+    <div class="learn-card">
+      <div>
+        <span class="learn-type learn-type--free">FREE GUIDE</span>
+        <h3 class="learn-card-title">Laravel Fundamentals</h3>
+        <p class="learn-card-meta">12টি অধ্যায় · 15 min read · ওয়েব ডেভেলপমেন্ট</p>
+      </div>
+      <div class="learn-card-footer">
+        <span style="font-size:13px;color:var(--ink-tertiary);">4,200+ শিক্ষার্থী</span>
+        <a href="#" class="learn-link">পড়া শুরু করুন →</a>
+      </div>
+    </div>
+    <div class="learn-card">
+      <div>
+        <span class="learn-type learn-type--path">LEARNING PATH</span>
+        <h3 class="learn-card-title">ব্যক্তিগত অর্থ ব্যবস্থাপনা</h3>
+        <p class="learn-card-meta">10টি অধ্যায় · সঞ্চয় থেকে বিনিয়োগ পর্যন্ত</p>
+      </div>
+      <div class="learn-card-footer">
+        <span style="font-size:13px;color:var(--ink-tertiary);">3,100+ শিক্ষার্থী</span>
+        <a href="#" class="learn-link">শুরু করুন →</a>
+      </div>
+    </div>
+    <div class="learn-card">
+      <div>
+        <span class="learn-type learn-type--study">STUDY GUIDE</span>
+        <h3 class="learn-card-title">ফ্রিল্যান্সিং ক্যারিয়ার গাইড</h3>
+        <p class="learn-card-meta">8টি অধ্যায় · Fiverr, Upwork স্ট্র্যাটেজি</p>
+      </div>
+      <div class="learn-card-footer">
+        <span style="font-size:13px;color:var(--ink-tertiary);">5,800+ শিক্ষার্থী</span>
+        <a href="#" class="learn-link">পড়ুন →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ▸ FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="কিকেনো?"></a>
+        <p class="footer-brand-text">বাংলায় জ্ঞান, তথ্য ও সিদ্ধান্ত নেওয়ার আপনার বিশ্বস্ত সঙ্গী।</p>
+      </div>
+      <div class="footer-col">
+        <h5>ইকোসিস্টেম</h5>
+        <ul>
+          <li><a href="janun.html">জানুন ও উত্তর</a></li>
+          <li><a href="shikhun.html">শিখুন ও কোর্স</a></li>
+          <li><a href="tulona.html">তুলনা ও গাইড</a></li>
+          <li><a href="proshno.html">প্রশ্ন করুন</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>সহায়তা</h5>
+        <ul>
+          <li><a href="#">সাহায্য কেন্দ্র</a></li>
+          <li><a href="#">যোগাযোগ</a></li>
+          <li><a href="#">গোপনীয়তা নীতি</a></li>
+          <li><a href="#">শর্তাবলী</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>যোগাযোগ</h5>
+        <ul>
+          <li><a href="mailto:info@kikeno.com">info@kikeno.com</a></li>
+          <li><a href="#">ঢাকা, বাংলাদেশ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 KiKeno — জ্ঞান ও লার্নিং প্ল্যাটফর্ম</span>
+      <div class="footer-bottom-links"><a href="#">গোপনীয়তা</a><a href="#">শর্তাবলী</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const moon = document.getElementById('iconMoon');
+  const sun = document.getElementById('iconSun');
+  const html = document.documentElement;
+  const saved = localStorage.getItem('kikeno-theme') || 'light';
+  html.setAttribute('data-theme', saved);
+  if (saved === 'dark') { moon.style.display = 'none'; sun.style.display = 'block'; }
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('kikeno-theme', next);
+    moon.style.display = next === 'dark' ? 'none' : 'block';
+    sun.style.display = next === 'dark' ? 'block' : 'none';
+  });
+  document.getElementById('mobileToggle').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+  document.querySelectorAll('.topic-pill').forEach(pill => {
+    pill.addEventListener('click', e => { e.preventDefault(); document.querySelectorAll('.topic-pill').forEach(p => p.classList.remove('selected')); pill.classList.add('selected'); });
+  });
+</script>
+</body>
+</html>

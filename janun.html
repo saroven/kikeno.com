@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>জানুন — KiKeno বাংলা Q&A কমিউনিটি</title>
+  <meta name="description" content="বাংলায় যেকোনো প্রশ্নের উত্তর খুঁজুন। প্রযুক্তি, স্বাস্থ্য, অর্থনীতি, বাংলাদেশ — সব বিষয়ে বিশেষজ্ঞ উত্তর পাবেন।">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+
+<!-- ▸ NAVBAR -->
+<header class="navbar">
+  <div class="wrap navbar-inner">
+    <div class="navbar-left">
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="কিকেনো?"></a>
+      <ul class="nav-menu">
+        <li><a href="index.html">কি কেন?</a></li>
+        <li><a href="janun.html" class="current">জানুন</a></li>
+        <li><a href="shikhun.html">শিখুন <span class="nav-badge">NEW</span></a></li>
+        <li><a href="tulona.html">তুলনা</a></li>
+        <li><a href="proshno.html">প্রশ্ন করুন</a></li>
+      </ul>
+    </div>
+    <div class="navbar-right">
+      <button class="icon-circle" id="themeToggle" title="থিম বদলান">
+        <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg id="iconSun" style="display:none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="btn-ghost">লগইন</button>
+      <a href="proshno.html" class="btn-solid">প্রশ্ন করুন</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="মেনু">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-mobile" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">কি কেন?</a></li>
+      <li><a href="janun.html">জানুন</a></li>
+      <li><a href="shikhun.html">শিখুন</a></li>
+      <li><a href="tulona.html">তুলনা</a></li>
+      <li><a href="proshno.html">প্রশ্ন করুন</a></li>
+    </ul>
+    <div style="display:flex; gap:10px; margin-top:12px;">
+      <button class="btn-ghost" style="flex:1;">লগইন</button>
+      <a href="proshno.html" class="btn-solid" style="flex:1;">প্রশ্ন করুন</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ▸ PAGE HEADER -->
+<div class="page-header">
+  <div class="wrap page-header-inner">
+    <div>
+      <p class="page-eyebrow">জানুন — Discover</p>
+      <h1 class="page-title">বাংলায় প্রশ্ন করুন, উত্তর পান</h1>
+      <p class="page-subtitle">প্রযুক্তি থেকে স্বাস্থ্য, অর্থনীতি থেকে আইন — বিশেষজ্ঞ কমিউনিটির কাছ থেকে নির্ভরযোগ্য উত্তর পান।</p>
+    </div>
+    <a href="proshno.html" class="btn-solid" style="white-space:nowrap;">+ নতুন প্রশ্ন করুন</a>
+  </div>
+</div>
+
+<!-- ▸ TOPICS BAR -->
+<div class="topics-bar">
+  <div class="wrap">
+    <ul class="topics-list">
+      <li><a class="topic-pill selected" href="#">সব বিষয়</a></li>
+      <li><a class="topic-pill" href="#"><span class="topic-dot" style="background:#3182ce"></span>প্রযুক্তি</a></li>
+      <li><a class="topic-pill" href="#"><span class="topic-dot" style="background:#38a169"></span>টাকা ও অর্থনীতি</a></li>
+      <li><a class="topic-pill" href="#"><span class="topic-dot" style="background:#805ad5"></span>শিক্ষা ও কেরিয়ার</a></li>
+      <li><a class="topic-pill" href="#"><span class="topic-dot" style="background:#e53e3e"></span>স্বাস্থ্য</a></li>
+      <li><a class="topic-pill" href="#"><span class="topic-dot" style="background:#d69e2e"></span>বাংলাদেশ</a></li>
+      <li><a class="topic-pill" href="#"><span class="topic-dot" style="background:#e53e3e"></span>মোবাইল ও গ্যাজেট</a></li>
+      <li><a class="topic-pill" href="#"><span class="topic-dot" style="background:#3182ce"></span>গাড়ি</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ▸ MAIN CONTENT -->
+<div class="wrap">
+  <div class="content-area">
+
+    <!-- FEED -->
+    <main class="main-feed">
+      <div class="feed-header-bar">
+        <div class="feed-title-wrap">
+          <h2 class="feed-title">সব প্রশ্ন ও উত্তর</h2>
+          <span class="feed-subtitle">50,000+ প্রশ্নের মধ্যে আপনার উত্তর খুঁজুন</span>
+        </div>
+        <div class="feed-actions">
+          <div class="feed-tab-group" role="tablist">
+            <button class="feed-tab active" role="tab">জনপ্রিয়</button>
+            <button class="feed-tab" role="tab">সাম্প্রতিক</button>
+            <button class="feed-tab" role="tab">উত্তরহীন</button>
+          </div>
+          <a href="proshno.html" class="btn-solid" style="padding:7px 16px;font-size:13px;">+ প্রশ্ন করুন</a>
+        </div>
+      </div>
+
+      <!-- Q Cards -->
+      <article class="q-card">
+        <div class="q-votes">
+          <button class="q-vote-btn btn-up" aria-label="আপভোট"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+          <span class="q-vote-num">485</span>
+          <button class="q-vote-btn btn-down" aria-label="ডাউনভোট"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        </div>
+        <div class="q-body">
+          <div class="q-header">
+            <span class="q-cat q-cat--tech">প্রযুক্তি</span>
+            <span class="expert-badge expert-badge--verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ভেরিফাইড টেক এক্সপার্ট</span>
+            <span class="q-time">2h আগে</span>
+          </div>
+          <a href="#" class="q-title-link">iPhone এত দামি কেন? অন্যান্য স্মার্টফোনের সাথে মূল পার্থক্য</a>
+          <p class="q-excerpt">Apple-এর iPhone স্মার্টফোনগুলো সাধারণ ফোনের তুলনায় বেশি ব্যয়বহুল হওয়ার প্রধান কারণ custom A-series silicon চিপ, প্রাইভেসি ও ইকোসিস্টেম লকিং।</p>
+          <div class="q-footer">
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 15.2K views</span>
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 312</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="q-card">
+        <div class="q-votes">
+          <button class="q-vote-btn btn-up" aria-label="আপভোট"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+          <span class="q-vote-num">342</span>
+          <button class="q-vote-btn btn-down" aria-label="ডাউনভোট"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        </div>
+        <div class="q-body">
+          <div class="q-header">
+            <span class="q-cat q-cat--health">স্বাস্থ্য</span>
+            <span class="q-time">3h আগে</span>
+          </div>
+          <a href="#" class="q-title-link">ডেঙ্গু কি? লক্ষণ, চিকিৎসা ও সঠিক প্রতিরোধ উপায়</a>
+          <p class="q-excerpt">ডেঙ্গু জ্বর এডিস মশার মাধ্যমে ছড়ায়। প্রধান লক্ষণগুলো হলো তীব্র জ্বর, মাথাব্যথা, চোখের পেছনে ব্যথা এবং প্লাটিলেট কমে যাওয়া।</p>
+          <div class="q-footer">
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 12.5K views</span>
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 256</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="q-card">
+        <div class="q-votes">
+          <button class="q-vote-btn btn-up" aria-label="আপভোট"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+          <span class="q-vote-num">219</span>
+          <button class="q-vote-btn btn-down" aria-label="ডাউনভোট"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        </div>
+        <div class="q-body">
+          <div class="q-header">
+            <span class="q-cat q-cat--finance">টাকা ও অর্থনীতি</span>
+            <span class="q-time">8h আগে</span>
+          </div>
+          <a href="#" class="q-title-link">শেয়ার বাজারে বিনিয়োগ কিভাবে শুরু করবেন? নতুনদের গাইড</a>
+          <p class="q-excerpt">ঢাকা স্টক এক্সচেঞ্জে বিও (BO) অ্যাকাউন্ট খোলার নিয়ম, ব্রোকারেজ হাউজ বাছাই এবং মৌলিক অ্যানালাইসিস শেখার সহজ গাইড।</p>
+          <div class="q-footer">
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 8.7K views</span>
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 193</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="q-card">
+        <div class="q-votes">
+          <button class="q-vote-btn btn-up" aria-label="আপভোট"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+          <span class="q-vote-num">198</span>
+          <button class="q-vote-btn btn-down" aria-label="ডাউনভোট"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        </div>
+        <div class="q-body">
+          <div class="q-header">
+            <span class="q-cat q-cat--finance">টাকা ও অর্থনীতি</span>
+            <span class="q-time">12h আগে</span>
+          </div>
+          <a href="#" class="q-title-link">FDR নাকি DPS — কোনটিতে টাকা রাখা বেশি লাভজনক?</a>
+          <p class="q-excerpt">স্থায়ী আমানত (FDR) এবং মাসিক ডিপিএস (DPS)-এর মধ্যে মেয়াদ, মুনাফার হার, ট্যাক্স এবং সুবিধাগুলোর বিস্তারিত তুলনা।</p>
+          <div class="q-footer">
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 9.1K views</span>
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 178</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="q-card">
+        <div class="q-votes">
+          <button class="q-vote-btn btn-up" aria-label="আপভোট"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+          <span class="q-vote-num">164</span>
+          <button class="q-vote-btn btn-down" aria-label="ডাউনভোট"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        </div>
+        <div class="q-body">
+          <div class="q-header">
+            <span class="q-cat q-cat--bd">বাংলাদেশ</span>
+            <span class="q-time">1d আগে</span>
+          </div>
+          <a href="#" class="q-title-link">ই-পাসপোর্ট আবেদনের জন্য কি কি ডকুমেন্টস লাগে? 2026 গাইড</a>
+          <p class="q-excerpt">অনলাইন আবেদন ফরম, জাতীয় পরিচয়পত্র (NID), ফি জমা দেওয়ার চালান এবং পুলিশ ভেরিফিকেশন সম্পর্কিত জরুরি তথ্য।</p>
+          <div class="q-footer">
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 6.3K views</span>
+            <span class="q-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 142</span>
+          </div>
+        </div>
+      </article>
+
+      <div style="text-align:center; padding: 32px 0;">
+        <button class="btn-ghost">আরও প্রশ্ন লোড করুন →</button>
+      </div>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <p class="sidebar-title">জনপ্রিয় বিষয়</p>
+        <ol class="sidebar-list">
+          <li class="sidebar-list-item"><a href="#"><span class="sidebar-num">01</span><span class="sidebar-link-text">প্রযুক্তি ও গ্যাজেট</span></a><span class="sidebar-meta">12,400+ প্রশ্ন</span></li>
+          <li class="sidebar-list-item"><a href="#"><span class="sidebar-num">02</span><span class="sidebar-link-text">স্বাস্থ্য ও চিকিৎসা</span></a><span class="sidebar-meta">9,800+ প্রশ্ন</span></li>
+          <li class="sidebar-list-item"><a href="#"><span class="sidebar-num">03</span><span class="sidebar-link-text">টাকা ও অর্থনীতি</span></a><span class="sidebar-meta">8,200+ প্রশ্ন</span></li>
+          <li class="sidebar-list-item"><a href="#"><span class="sidebar-num">04</span><span class="sidebar-link-text">শিক্ষা ও কেরিয়ার</span></a><span class="sidebar-meta">6,500+ প্রশ্ন</span></li>
+        </ol>
+      </div>
+      <div class="sidebar-section">
+        <div class="newsletter-card">
+          <h4>সাপ্তাহিক নিউজলেটার</h4>
+          <p>প্রতি সপ্তাহে সেরা প্রশ্ন, উত্তর ও লার্নিং রিসোর্স আপনার ইনবক্সে পান।</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('সাবস্ক্রাইব সফল!');">
+            <input type="email" placeholder="আপনার ইমেইল" required>
+            <button type="submit">পাঠান</button>
+          </form>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- ▸ FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="কিকেনো?"></a>
+        <p class="footer-brand-text">বাংলায় জ্ঞান, তথ্য ও সিদ্ধান্ত নেওয়ার আপনার বিশ্বস্ত সঙ্গী।</p>
+      </div>
+      <div class="footer-col">
+        <h5>ইকোসিস্টেম</h5>
+        <ul>
+          <li><a href="janun.html">জানুন ও উত্তর</a></li>
+          <li><a href="shikhun.html">শিখুন ও কোর্স</a></li>
+          <li><a href="tulona.html">তুলনা ও গাইড</a></li>
+          <li><a href="proshno.html">প্রশ্ন করুন</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>সহায়তা</h5>
+        <ul>
+          <li><a href="#">সাহায্য কেন্দ্র</a></li>
+          <li><a href="#">যোগাযোগ</a></li>
+          <li><a href="#">গোপনীয়তা নীতি</a></li>
+          <li><a href="#">শর্তাবলী</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>যোগাযোগ</h5>
+        <ul>
+          <li><a href="mailto:info@kikeno.com">info@kikeno.com</a></li>
+          <li><a href="#">ঢাকা, বাংলাদেশ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 KiKeno — জ্ঞান ও লার্নিং প্ল্যাটফর্ম</span>
+      <div class="footer-bottom-links">
+        <a href="#">গোপনীয়তা</a>
+        <a href="#">শর্তাবলী</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const moon = document.getElementById('iconMoon');
+  const sun = document.getElementById('iconSun');
+  const html = document.documentElement;
+  const saved = localStorage.getItem('kikeno-theme') || 'light';
+  html.setAttribute('data-theme', saved);
+  if (saved === 'dark') { moon.style.display = 'none'; sun.style.display = 'block'; }
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('kikeno-theme', next);
+    moon.style.display = next === 'dark' ? 'none' : 'block';
+    sun.style.display = next === 'dark' ? 'block' : 'none';
+  });
+  document.getElementById('mobileToggle').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+  document.querySelectorAll('.feed-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.feed-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+  document.querySelectorAll('.topic-pill').forEach(pill => {
+    pill.addEventListener('click', e => { e.preventDefault(); document.querySelectorAll('.topic-pill').forEach(p => p.classList.remove('selected')); pill.classList.add('selected'); });
+  });
+</script>
+</body>
+</html>
